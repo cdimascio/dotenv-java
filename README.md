@@ -124,7 +124,7 @@ for (DotenvEntry e : dotenv.entries()) {
 	Dotenv
 	  .configure()
 	  .directory("/some/path")
-	  .load()
+	  .load();
 	```
 
 ### *optional* `filename`
@@ -137,7 +137,7 @@ for (DotenvEntry e : dotenv.entries()) {
 	Dotenv
 	  .configure()
 	  .filename("myenv")
-	  .load()
+	  .load();
 	```
 
 ### *optional* `ignoreIfMalformed`
@@ -150,7 +150,7 @@ for (DotenvEntry e : dotenv.entries()) {
 	Dotenv
 	  .configure()
 	  .ignoreIfMalformed()
-	  .load()
+	  .load();
 	```
 
 ### *optional* `ignoreIfMissing` 
@@ -163,7 +163,7 @@ for (DotenvEntry e : dotenv.entries()) {
 	Dotenv
 	  .configure()
 	  .ignoreIfMissing()
-	  .load()
+	  .load();
 	```
 
 ### *optional* `systemProperties` 
@@ -176,7 +176,7 @@ for (DotenvEntry e : dotenv.entries()) {
 	Dotenv
 	  .configure()
 	  .systemProperties()
-	  .load()
+	  .load();
 	```
 
 ## FAQ
