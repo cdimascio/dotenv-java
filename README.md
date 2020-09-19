@@ -23,7 +23,7 @@ Use `dotenv.get("...")` instead of Java's `System.getenv(...)`.
 
 ## Install
 
-### Maven (coming soon...)
+### Maven
 ```xml
 <dependency>
     <groupId>io.github.cdimascio</groupId>
@@ -32,7 +32,7 @@ Use `dotenv.get("...")` instead of Java's `System.getenv(...)`.
 </dependency>
 ```
 
-### Gradle (coming soon...)
+### Gradle
 
 ```groovy
 compile 'io.github.cdimascio:dotenv-java:1.0.2'
