@@ -1,0 +1,8 @@
+## Good test EVs
+MY_TEST_EV1=my test ev 1
+MY_TEST_EV2=my test ev 2
+WITHOUT_VALUE=
+MULTI_LINE=hello\nworld
+
+## Malformed EV!
+MY_TEST_EV3

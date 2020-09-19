@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <name>dotenv-java</name>
+  <description>Environment based config for the JVM</description>
+  <url>https://github.com/cdimascio/dotenv-java</url>
+
+  <groupId>io.github.cdimascio</groupId>
+  <artifactId>dotenv-java</artifactId>
+  <version>1.0.0</version>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+      <comments>A business-friendly OSS license</comments>
+    </license>
+  </licenses>
+
+  <organization>
+    <name>Carmine DiMascio OSS</name>
+    <url>https://github.com/cdimascio</url>
+  </organization>
+
+  <scm>
+    <connection>scm:github:https://github.com/cdimascio/dotenv-java</connection>
+    <developerConnection>scm:github:https://github.com/cdimascio/dotenv-java</developerConnection>
+    <tag>master</tag>
+    <url>https://github.com/cdimascio/dotenv-java</url>
+  </scm>
+
+  <developers>
+    <developer>
+      <id>cdimascio</id>
+      <name>Carmine DiMascio</name>
+      <email>cdimascio@gmail.com</email>
+      <url>https://www.github.com/cdimascio</url>
+      <organization>Carmine DiMascio OSS</organization>
+      <organizationUrl>https://www.github.com/cdimascio</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>America/New_York</timezone>
+    </developer>
+  </developers>
+
+
+  <properties>
+    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+    <main.class>io.github.cdimascio.dotenv.Dotenv</main.class>
+    <junit.version>4.12</junit.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <maven.source.plugin>3.0.1</maven.source.plugin>
+    <maven.javadoc.plugin>3.0.0</maven.javadoc.plugin>
+    <bintray.subject>cdimascio</bintray.subject>
+    <bintray.repo>maven</bintray.repo>
+    <bintray.package>dotenv-java</bintray.package>
+  </properties>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>jcenter</id>
+      <name>JCenter</name>
+      <url>https://jcenter.bintray.com/</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.22.0</version>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.surefire</groupId>
+            <artifactId>surefire-junit4</artifactId>
+            <version>2.22.0</version>
+          </dependency>
+        </dependencies>
+        <configuration>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>${maven.source.plugin}</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${maven.javadoc.plugin}</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!--            <plugin>-->
+      <!--                <groupId>org.jacoco</groupId>-->
+      <!--                <artifactId>jacoco-maven-plugin</artifactId>-->
+      <!--                <version>0.7.6.201602180812</version>-->
+      <!--                <executions>-->
+      <!--                    <execution>-->
+      <!--                        <id>prepare-agent</id>-->
+      <!--                        <goals>-->
+      <!--                            <goal>prepare-agent</goal>-->
+      <!--                        </goals>-->
+      <!--                    </execution>-->
+      <!--                </executions>-->
+      <!--            </plugin>-->
+      <!--            <plugin>-->
+      <!--                <groupId>org.eluder.coveralls</groupId>-->
+      <!--                <artifactId>coveralls-maven-plugin</artifactId>-->
+      <!--                <version>4.3.0</version>-->
+      <!--                <configuration>-->
+      <!--                    <repoToken>i3Bl4av26PMqZNekY8X3Jt7t6YhwFXKFu</repoToken>-->
+      <!--                </configuration>-->
+      <!--            </plugin>-->
+    </plugins>
+  </build>
+
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>Carmine M DiMascio</name>
+      <url>https://maven.pkg.github.com/cdimascio/dotenv-java</url>
+    </repository>
+  </distributionManagement>
+</project>
