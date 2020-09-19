@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 public class DotenvReader {
     private final String directory;
     private final String filename;
+
     public DotenvReader(String directory, String filename) {
         this.directory = directory;
         this.filename = filename;
@@ -42,8 +43,8 @@ public class DotenvReader {
                 .collect(Collectors.toList());
         } catch (DotenvException e) {
             var cwd = FileSystems.getDefault().getPath(".").toAbsolutePath().normalize();
-            var cwdMessage = !path.isAbsolute() ? "(working directory: " +cwd+ ")" : "";
-            e.addSuppressed(new DotenvException("Could not find $path on the file system " +cwdMessage));
+            var cwdMessage = !path.isAbsolute() ? "(working directory: " + cwd + ")" : "";
+            e.addSuppressed(new DotenvException("Could not find " + path + " on the file system " + cwdMessage));
             throw e;
         }
     }
