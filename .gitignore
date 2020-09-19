@@ -90,3 +90,4 @@ buildNumber.properties
 *.iml
 
 /sav
+.coveralls.yml
