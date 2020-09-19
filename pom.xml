@@ -10,7 +10,7 @@
 
   <groupId>io.github.cdimascio</groupId>
   <artifactId>dotenv-java</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 
   <licenses>
     <license>
@@ -57,7 +57,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <maven.source.plugin>3.0.1</maven.source.plugin>
-    <maven.javadoc.plugin>3.0.0</maven.javadoc.plugin>
+    <maven.javadoc.plugin>3.2.0</maven.javadoc.plugin>
     <bintray.subject>cdimascio</bintray.subject>
     <bintray.repo>maven</bintray.repo>
     <bintray.package>dotenv-java</bintray.package>
@@ -113,10 +113,13 @@
           </execution>
         </executions>
       </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>${maven.javadoc.plugin}</version>
+        <configuration>
+        </configuration>
         <executions>
           <execution>
             <id>attach-javadocs</id>
@@ -126,27 +129,29 @@
           </execution>
         </executions>
       </plugin>
-      <!--            <plugin>-->
-      <!--                <groupId>org.jacoco</groupId>-->
-      <!--                <artifactId>jacoco-maven-plugin</artifactId>-->
-      <!--                <version>0.7.6.201602180812</version>-->
-      <!--                <executions>-->
-      <!--                    <execution>-->
-      <!--                        <id>prepare-agent</id>-->
-      <!--                        <goals>-->
-      <!--                            <goal>prepare-agent</goal>-->
-      <!--                        </goals>-->
-      <!--                    </execution>-->
-      <!--                </executions>-->
-      <!--            </plugin>-->
-      <!--            <plugin>-->
-      <!--                <groupId>org.eluder.coveralls</groupId>-->
-      <!--                <artifactId>coveralls-maven-plugin</artifactId>-->
-      <!--                <version>4.3.0</version>-->
-      <!--                <configuration>-->
-      <!--                    <repoToken>i3Bl4av26PMqZNekY8X3Jt7t6YhwFXKFu</repoToken>-->
-      <!--                </configuration>-->
-      <!--            </plugin>-->
+
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.6</version>
+        <executions>
+          <execution>
+            <id>prepare-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+<!--      <plugin>-->
+<!--        <groupId>org.eluder.coveralls</groupId>-->
+<!--        <artifactId>coveralls-maven-plugin</artifactId>-->
+<!--        <version>4.3.0</version>-->
+<!--        <configuration>-->
+<!--          <repoToken>i3Bl4av26PMqZNekY8X3Jt7t6YhwFXKFu</repoToken>-->
+<!--        </configuration>-->
+<!--      </plugin>-->
     </plugins>
   </build>
 

@@ -102,6 +102,12 @@ public class DotenvBuilder {
             return value != null ? value : map.get(key);
         }
 
+        @Override
+        public String get(String key, String defaultValue) {
+            var value = this.get(key);
+            return value != null ? value : defaultValue;
+        }
+
         private Map<String, String> buildEntries() {
             var envMap = new HashMap<String, String>();
             System.getenv().forEach(envMap::put);

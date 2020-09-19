@@ -19,4 +19,5 @@ public interface Dotenv {
     Set<DotenvEntry> entries();
     Set<DotenvEntry> entries(EntriesFilter filter);
     String get(String key);
+    String get(String key, String defaultValue);
 }
