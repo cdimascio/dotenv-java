@@ -21,10 +21,6 @@ Environment variables listed in the host environment override those in `.env`.
 
 Use `dotenv.get("...")` instead of Java's `System.getenv(...)`.  
 
-## Prequisites
-
-requires Java 11 or greater.
-
 ## Install
 
 ### Maven (coming soon...)
