@@ -6,5 +6,4 @@ script: mvn clean test
 
 sudo: false
 after_success:
-#  - mvn clean test jacoco:report coveralls:report
-  - mvn clean test jacoco:report
+  - mvn clean test jacoco:report coveralls:report

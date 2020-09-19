@@ -75,11 +75,20 @@ public class DotenvBuilder {
     }
 
     public static class DotenvImpl implements Dotenv {
-        private final Map<String, String> map;
+        private final Map<String, String> envVars;
         private final Set<DotenvEntry> set;
+        private final Set<DotenvEntry> setInFile;
+        private final Map<String, String> envVarsInFile;
         public DotenvImpl(List<DotenvEntry> envVars) {
-            this.map = envVars.stream().collect(toMap(DotenvEntry::getKey, DotenvEntry::getValue));
-            this.set = buildEntries().entrySet().stream()
+            this.envVarsInFile = envVars.stream().collect(toMap(DotenvEntry::getKey, DotenvEntry::getValue));
+            this.envVars = new HashMap<>(this.envVarsInFile);
+            System.getenv().forEach(this.envVars::put);
+
+            this.set =this.envVars.entrySet().stream()
+                .map(it -> new DotenvEntry(it.getKey(), it.getValue()))
+                .collect(toUnmodifiableSet());
+
+            this.setInFile =this.envVarsInFile.entrySet().stream()
                 .map(it -> new DotenvEntry(it.getKey(), it.getValue()))
                 .collect(toUnmodifiableSet());
         }
@@ -91,27 +100,20 @@ public class DotenvBuilder {
 
         @Override
         public Set<DotenvEntry> entries(EntriesFilter filter) {
-            return this.map.entrySet().stream()
-                .map(it -> new DotenvEntry(it.getKey(), it.getValue()))
-                .collect(toUnmodifiableSet());
+            if (filter != null) return setInFile;
+            return entries();
         }
 
         @Override
         public String get(String key) {
             var value = System.getenv(key);
-            return value != null ? value : map.get(key);
+            return value != null ? value : envVars.get(key);
         }
 
         @Override
         public String get(String key, String defaultValue) {
             var value = this.get(key);
             return value != null ? value : defaultValue;
-        }
-
-        private Map<String, String> buildEntries() {
-            var envMap = new HashMap<String, String>();
-            System.getenv().forEach(envMap::put);
-            return envMap;
         }
     }
 }
