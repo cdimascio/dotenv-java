@@ -18,7 +18,7 @@ public class ClasspathHelper {
         }
 
         if (inputStream == null) {
-            throw new DotenvException("Could not find $location on the classpath");
+            throw new DotenvException("Could not find "+location+" on the classpath");
         }
         var scanner = new Scanner(inputStream, "utf-8");
         var lines = new ArrayList<String>();
