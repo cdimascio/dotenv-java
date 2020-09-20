@@ -5,7 +5,7 @@
 A no-dependency, pure Java port of the Ruby dotenv project. Load environment variables from a `.env` file.
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/cdimascio/dotenv-java/master/assets/dotenv-java-logo.png" alt="dotenv" /> 
+	<img src="https://raw.githubusercontent.com/cdimascio/dotenv-java/master/assets/dotenv-java-logo.png" alt="dotenv" width="550"/> 
 </p>
 
 Why dotenv?
