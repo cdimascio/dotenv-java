@@ -2,14 +2,10 @@ package io.github.cdimascio.dotenv;
 
 import java.util.Set;
 
-
+/**
+ * Creates and configures a new dotenv instance
+ */
 public interface Dotenv {
-    enum EntriesFilter {
-        /**
-         * Filter matching only environment variables declared in the .env file
-         */
-        DECLARED_IN_ENV_FILE
-    }
 
     /**
      * Configures a new {@link Dotenv} instance
@@ -34,11 +30,11 @@ public interface Dotenv {
     Set<DotenvEntry> entries();
 
     /**
-     * Returns the set of  {@link EntriesFilter}s matching the the filter
-     * @param filter the filter e.g. {@link EntriesFilter}
-     * @return the set of {@link DotenvEntry}s for environment variables matching the {@link EntriesFilter}
+     * Returns the set of  {@link DotenvEntry.Filter}s matching the the filter
+     * @param filter the filter e.g. {@link DotenvEntry.Filter}
+     * @return the set of {@link DotenvEntry}s for environment variables matching the {@link DotenvEntry.Filter}
      */
-    Set<DotenvEntry> entries(EntriesFilter filter);
+    Set<DotenvEntry> entries(DotenvEntry.Filter filter);
 
     /**
      * Retrieves the value of the environment variable specified by key

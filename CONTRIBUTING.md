@@ -42,7 +42,7 @@ Replace code with doc or test or infra or some combination depending on your con
 Contributors are not responsible for pushing packages to mavencentral and jcenter. Contributors are responsible for validating that the package step succeeds.
 
 ```shell
-mvn clean test dokka:javadocJar package 
+mvn clean test jacoco:report package 
 ```
 
 ### Publish to Github Packages

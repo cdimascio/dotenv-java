@@ -56,7 +56,7 @@
     <main.class>io.github.cdimascio.dotenv.Dotenv</main.class>
     <junit.version>4.12</junit.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
+    <javadoc.dir>javadoc</javadoc.dir>
     <maven.source.plugin>3.0.1</maven.source.plugin>
     <maven.javadoc.plugin>3.2.0</maven.javadoc.plugin>
     <bintray.subject>cdimascio</bintray.subject>
@@ -84,6 +84,29 @@
   <build>
     <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
     <plugins>
+
+      <!-- delete the javadoc dir -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>create-javadoc-dir</id>
+            <phase>compile</phase>
+            <configuration>
+              <tasks>
+                <delete dir="${javadoc.dir}"/>
+                <mkdir dir="${javadoc.dir}"/>
+              </tasks>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- compile sources -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -101,6 +124,8 @@
           </includes>
         </configuration>
       </plugin>
+
+      <!-- build javadoc jar -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
@@ -115,6 +140,7 @@
         </executions>
       </plugin>
 
+      <!-- build the javadoc -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
@@ -124,6 +150,7 @@
         <executions>
           <execution>
             <id>attach-javadocs</id>
+            <phase>compile</phase>
             <goals>
               <goal>jar</goal>
             </goals>
@@ -131,6 +158,7 @@
         </executions>
       </plugin>
 
+      <!-- generate coverage report -->
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
@@ -145,6 +173,7 @@
         </executions>
       </plugin>
 
+      <!-- Send to coveralls -->
       <plugin>
         <groupId>org.eluder.coveralls</groupId>
         <artifactId>coveralls-maven-plugin</artifactId>
@@ -161,6 +190,7 @@
         </dependencies>
       </plugin>
 
+      <!-- copy pom to target -->
       <plugin>
         <groupId>com.coderplus.maven.plugins</groupId>
         <artifactId>copy-rename-maven-plugin</artifactId>
@@ -168,7 +198,7 @@
         <executions>
           <execution>
             <id>copy-file</id>
-            <phase>compile</phase>
+            <phase>install</phase>
             <goals>
               <goal>copy</goal>
             </goals>
@@ -181,6 +211,21 @@
               </fileSets>
             </configuration>
           </execution>
+<!--          <execution>-->
+<!--            <id>rename-dir</id>-->
+<!--            <phase>install</phase>-->
+<!--            <goals>-->
+<!--              <goal>rename</goal>-->
+<!--            </goals>-->
+<!--            <configuration>-->
+<!--              <fileSets>-->
+<!--                <fileSet>-->
+<!--                  <sourceFile>${project.build.directory}/apidocs/</sourceFile>-->
+<!--                  <destinationFile>${project.basedir}/javadoc/</destinationFile>-->
+<!--                </fileSet>-->
+<!--              </fileSets>-->
+<!--            </configuration>-->
+<!--          </execution>-->
         </executions>
       </plugin>
     </plugins>
