@@ -8,9 +8,10 @@
   <description>Environment based config for the JVM</description>
   <url>https://github.com/cdimascio/dotenv-java</url>
 
+
   <groupId>io.github.cdimascio</groupId>
   <artifactId>dotenv-java</artifactId>
-  <version>1.0.3</version>
+  <version>1.1.0</version>
 
   <licenses>
     <license>
@@ -158,6 +159,29 @@
             <version>2.2.3</version>
           </dependency>
         </dependencies>
+      </plugin>
+
+      <plugin>
+        <groupId>com.coderplus.maven.plugins</groupId>
+        <artifactId>copy-rename-maven-plugin</artifactId>
+        <version>1.0.1</version>
+        <executions>
+          <execution>
+            <id>copy-file</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <fileSets>
+                <fileSet>
+                  <sourceFile>${project.basedir}/pom.xml</sourceFile>
+                  <destinationFile>${project.build.directory}/dotenv-java-1.1.0.pom</destinationFile>
+                </fileSet>
+              </fileSets>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
