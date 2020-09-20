@@ -38,6 +38,8 @@ Use `dotenv.get("...")` instead of Java's `System.getenv(...)`.
 compile 'io.github.cdimascio:dotenv-java:1.1.0'
 ```
 
+Looking for the Kotlin variant? **get [dotenv-kotlin](https://github.com/cdimascio/dotenv-kotlin)**
+
 ## Usage
 Use `dotenv.get("...")` instead of Java's `System.getenv(...)`. Here's [why](#faq).
 
