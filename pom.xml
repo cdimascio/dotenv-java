@@ -92,7 +92,7 @@
         <executions>
           <execution>
             <id>create-javadoc-dir</id>
-            <phase>validate</phase>
+            <phase>compile</phase>
             <configuration>
               <tasks>
                 <delete dir="${javadoc.dir}"/>
@@ -198,7 +198,7 @@
         <executions>
           <execution>
             <id>copy-file</id>
-            <phase>compile</phase>
+            <phase>install</phase>
             <goals>
               <goal>copy</goal>
             </goals>
@@ -213,7 +213,7 @@
           </execution>
           <execution>
             <id>rename-dir</id>
-            <phase>compile</phase>
+            <phase>install</phase>
             <goals>
               <goal>rename</goal>
             </goals>
