@@ -179,6 +179,10 @@ for (DotenvEntry e : dotenv.entries()) {
 	  .load();
 	```
 
+## Examples
+- with [Maven (simple)](examples/maven-simple)
+- see [Java tests](./src/test/java/tests/DotenvTests.java) 
+
 ## FAQ
 
 **Q:** Should I deploy a `.env` to e.g. production?
