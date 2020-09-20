@@ -11,6 +11,10 @@ import java.util.Set;
 import static java.util.stream.Collectors.toMap;
 import static java.util.stream.Collectors.toUnmodifiableSet;
 
+/**
+ * Builds and loads and {@link Dotenv} instance
+ * @see Dotenv#configure()
+ */
 public class DotenvBuilder {
     private String filename = ".env";
     private String directoryPath = "./";
@@ -106,7 +110,7 @@ public class DotenvBuilder {
         }
 
         @Override
-        public Set<DotenvEntry> entries(EntriesFilter filter) {
+        public Set<DotenvEntry> entries(DotenvEntry.Filter filter) {
             if (filter != null) return setInFile;
             return entries();
         }
