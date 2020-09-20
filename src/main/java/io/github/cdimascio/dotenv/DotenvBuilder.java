@@ -20,7 +20,8 @@ public class DotenvBuilder {
 
     /**
      * Sets the directory containing the .env file
-     * @param path The path
+     * @param path the directory containing the .env file
+     * @return this {@link DotenvBuilder}
      */
     public DotenvBuilder directory(String path) {
         this.directoryPath = path;
@@ -28,7 +29,8 @@ public class DotenvBuilder {
     }
     /**
      * Sets the name of the .env file. The default is .env
-     * @param name The filename
+     * @param name the filename
+     * @return this {@link DotenvBuilder}
      */
     public DotenvBuilder filename(String name) {
         filename = name;
@@ -36,7 +38,8 @@ public class DotenvBuilder {
     }
 
     /**
-     * Do not throw an exception when .env is missing
+     * Does not throw an exception when .env is missing
+     * @return this {@link DotenvBuilder}
      */
     public DotenvBuilder ignoreIfMissing() {
         throwIfMissing = false;
@@ -44,7 +47,8 @@ public class DotenvBuilder {
     }
 
     /**
-     * Do not throw an exception when .env is malformed
+     * Does not throw an exception when .env is malformed
+     * @return this {@link DotenvBuilder}
      */
     public DotenvBuilder ignoreIfMalformed() {
         throwIfMalformed = false;
@@ -52,7 +56,8 @@ public class DotenvBuilder {
     }
 
     /**
-     * Adds environment variables into system properties
+     * Sets each environment variable as system properties
+     * @return this {@link DotenvBuilder}
      */
     public DotenvBuilder systemProperties() {
         systemProperties = true;
@@ -61,8 +66,10 @@ public class DotenvBuilder {
 
     /**
      * Load the contents of .env into the virtual environment
+     * @return a new {@link Dotenv} instance
+     * @throws DotenvException when an error occurs
      */
-    public DotenvImpl load() throws DotenvException {
+    public Dotenv load() throws DotenvException {
         DotenvParser reader = new DotenvParser(
             new DotenvReader(directoryPath, filename),
             throwIfMissing,
@@ -74,7 +81,7 @@ public class DotenvBuilder {
         return new DotenvImpl(env);
     }
 
-    public static class DotenvImpl implements Dotenv {
+    static class DotenvImpl implements Dotenv {
         private final Map<String, String> envVars;
         private final Set<DotenvEntry> set;
         private final Set<DotenvEntry> setInFile;
