@@ -84,6 +84,27 @@
   <build>
     <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
     <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>create-javadoc-dir</id>
+            <phase>compile</phase>
+            <configuration>
+              <tasks>
+                <delete dir="${javadoc.dir}"/>
+                <mkdir dir="${javadoc.dir}"/>
+              </tasks>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -162,25 +183,6 @@
         </dependencies>
       </plugin>
 
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>create-javadoc-dir</id>
-            <phase>process-resources</phase>
-            <configuration>
-              <tasks>
-                <delete dir="${javadoc.dir}"/>
-                <mkdir dir="${javadoc.dir}"/>
-              </tasks>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
       <plugin>
         <groupId>com.coderplus.maven.plugins</groupId>
         <artifactId>copy-rename-maven-plugin</artifactId>
