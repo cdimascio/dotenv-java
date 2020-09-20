@@ -7,3 +7,4 @@ script: mvn clean test
 sudo: false
 after_success:
   - mvn clean compile test jacoco:report coveralls:report package
+#  - mvn install
