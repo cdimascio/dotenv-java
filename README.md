@@ -8,6 +8,8 @@ A no-dependency, pure Java port of the Ruby dotenv project. Load environment var
 	<img src="https://raw.githubusercontent.com/cdimascio/dotenv-java/master/assets/dotenv-java-logo.png" alt="dotenv" width="550"/> 
 </p>
 
+_dotenv-java also powers the popular [dotenv-kotlin](https://github.com/cdimascio/dotenv-kotlin) library._
+
 Why dotenv?
 
 >Storing configuration in the environment is one of the tenets of a [twelve-factor](http://12factor.net/config) app. Anything that is likely to change between deployment environments–such as resource handles for databases or credentials for external services–should be extracted from the code into environment variables.
