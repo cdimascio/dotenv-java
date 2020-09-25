@@ -56,7 +56,7 @@
     <main.class>io.github.cdimascio.dotenv.Dotenv</main.class>
     <junit.version>4.12</junit.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <javadoc.dir>javadoc</javadoc.dir>
+    <javadoc.dir>docs/javadoc</javadoc.dir>
     <maven.source.plugin>3.0.1</maven.source.plugin>
     <maven.javadoc.plugin>3.2.0</maven.javadoc.plugin>
     <bintray.subject>cdimascio</bintray.subject>
@@ -221,7 +221,7 @@
 <!--              <fileSets>-->
 <!--                <fileSet>-->
 <!--                  <sourceFile>${project.build.directory}/apidocs/</sourceFile>-->
-<!--                  <destinationFile>${project.basedir}/javadoc/</destinationFile>-->
+<!--                  <destinationFile>${project.basedir}/docs/javadoc/</destinationFile>-->
 <!--                </fileSet>-->
 <!--              </fileSets>-->
 <!--            </configuration>-->
