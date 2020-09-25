@@ -4,15 +4,6 @@ package io.github.cdimascio.dotenv;
  * A key value pair representing an environment variable and its value
  */
 public class DotenvEntry {
-    /**
-     * A dotenv entry filter
-     */
-    public enum Filter {
-        /**
-         * Filter matching only environment variables declared in the .env file
-         */
-        DECLARED_IN_ENV_FILE
-    }
 
     private final String key;
     private final String value;

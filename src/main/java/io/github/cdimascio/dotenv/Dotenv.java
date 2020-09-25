@@ -8,6 +8,16 @@ import java.util.Set;
 public interface Dotenv {
 
     /**
+     * A dotenv entry filter
+     */
+    public enum Filter {
+        /**
+         * Filter matching only environment variables declared in the .env file
+         */
+        DECLARED_IN_ENV_FILE
+    }
+
+    /**
      * Configures a new {@link Dotenv} instance
      * @return a new {@link Dotenv} instance
      */
@@ -30,11 +40,11 @@ public interface Dotenv {
     Set<DotenvEntry> entries();
 
     /**
-     * Returns the set of  {@link DotenvEntry.Filter}s matching the the filter
-     * @param filter the filter e.g. {@link DotenvEntry.Filter}
-     * @return the set of {@link DotenvEntry}s for environment variables matching the {@link DotenvEntry.Filter}
+     * Returns the set of  {@link Dotenv.Filter}s matching the the filter
+     * @param filter the filter e.g. {@link Dotenv.Filter}
+     * @return the set of {@link DotenvEntry}s for environment variables matching the {@link Dotenv.Filter}
      */
-    Set<DotenvEntry> entries(DotenvEntry.Filter filter);
+    Set<DotenvEntry> entries(Filter filter);
 
     /**
      * Retrieves the value of the environment variable specified by key
