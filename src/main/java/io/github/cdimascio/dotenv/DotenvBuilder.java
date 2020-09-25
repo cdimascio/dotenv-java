@@ -110,7 +110,7 @@ public class DotenvBuilder {
         }
 
         @Override
-        public Set<DotenvEntry> entries(DotenvEntry.Filter filter) {
+        public Set<DotenvEntry> entries(Dotenv.Filter filter) {
             if (filter != null) return setInFile;
             return entries();
         }
