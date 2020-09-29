@@ -40,7 +40,7 @@ public interface Dotenv {
     Set<DotenvEntry> entries();
 
     /**
-     * Returns the set of  {@link Dotenv.Filter}s matching the the filter
+     * Returns the set of {@link DotenvEntry}s matching the the filter
      * @param filter the filter e.g. {@link Dotenv.Filter}
      * @return the set of {@link DotenvEntry}s for environment variables matching the {@link Dotenv.Filter}
      */
@@ -55,8 +55,7 @@ public interface Dotenv {
 
     /**
      * Retrieves the value of the environment variable specified by key.
-     * If the environment variable specified by key does not exist, then
-     * the defaut value is returned
+     * If the key does not exist, then the default value is returned
      * @param key the environment variable
      * @param defaultValue the default value to return
      * @return the value of the environment variable or default value
