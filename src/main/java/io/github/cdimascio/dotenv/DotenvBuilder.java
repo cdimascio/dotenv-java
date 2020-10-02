@@ -78,7 +78,7 @@ public class DotenvBuilder {
             new DotenvReader(directoryPath, filename),
             throwIfMissing,
             throwIfMalformed);
-        var env = reader.parse();
+        List<DotenvEntry> env = reader.parse();
         if (systemProperties) {
             env.forEach(it -> System.setProperty(it.getKey(), it.getValue()));
         }
@@ -117,13 +117,13 @@ public class DotenvBuilder {
 
         @Override
         public String get(String key) {
-            var value = System.getenv(key);
+            String value = System.getenv(key);
             return value != null ? value : envVars.get(key);
         }
 
         @Override
         public String get(String key, String defaultValue) {
-            var value = this.get(key);
+            String value = this.get(key);
             return value != null ? value : defaultValue;
         }
     }
