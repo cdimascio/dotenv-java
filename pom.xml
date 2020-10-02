@@ -11,7 +11,7 @@
 
   <groupId>io.github.cdimascio</groupId>
   <artifactId>dotenv-java</artifactId>
-  <version>2.0.0</version>
+  <version>2.1.0</version>
 
   <licenses>
     <license>
@@ -51,14 +51,24 @@
 
 
   <properties>
-    <maven.compiler.target>11</maven.compiler.target>
-    <maven.compiler.source>11</maven.compiler.source>
     <main.class>io.github.cdimascio.dotenv.Dotenv</main.class>
-    <junit.version>4.12</junit.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <compile.source>1.8</compile.source>
+    <compile.test.source>11</compile.test.source>
+    <compile.javadoc.source>8</compile.javadoc.source>
+
     <javadoc.dir>docs/javadoc</javadoc.dir>
+
+    <junit.version>4.12</junit.version>
+
     <maven.source.plugin>3.0.1</maven.source.plugin>
     <maven.javadoc.plugin>3.2.0</maven.javadoc.plugin>
+    <maven.surefire.plugin>2.22.0</maven.surefire.plugin>
+    <maven.jacoco.plugin>0.8.6</maven.jacoco.plugin>
+    <maven.coveralls.plugin>4.3.0</maven.coveralls.plugin>
+    <maven.copy.rename.plugin>1.0.1</maven.copy.rename.plugin>
+
     <bintray.subject>cdimascio</bintray.subject>
     <bintray.repo>maven</bintray.repo>
     <bintray.package>dotenv-java</bintray.package>
@@ -85,6 +95,19 @@
     <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
     <plugins>
 
+      <!-- compile java 1.8 for lib and java 11 for tests-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+          <source>${compile.source}</source>
+          <target>${compile.source}</target>
+          <testSource>${compile.test.source}</testSource>
+          <testTarget>${compile.test.source}</testTarget>
+        </configuration>
+      </plugin>
+
       <!-- delete the javadoc dir -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -106,11 +129,11 @@
         </executions>
       </plugin>
 
-      <!-- compile sources -->
+      <!-- plugin for tests -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.22.0</version>
+        <version>${maven.surefire.plugin}</version>
         <dependencies>
           <dependency>
             <groupId>org.apache.maven.surefire</groupId>
@@ -146,6 +169,7 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>${maven.javadoc.plugin}</version>
         <configuration>
+          <source>${compile.javadoc.source}</source>
         </configuration>
         <executions>
           <execution>
@@ -162,7 +186,7 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.6</version>
+        <version>${maven.jacoco.plugin}</version>
         <executions>
           <execution>
             <id>prepare-agent</id>
@@ -177,7 +201,7 @@
       <plugin>
         <groupId>org.eluder.coveralls</groupId>
         <artifactId>coveralls-maven-plugin</artifactId>
-        <version>4.3.0</version>
+        <version>${maven.coveralls.plugin}</version>
         <configuration>
           <repoToken>r92OLg0S3kCJakLAMW6HlLsDgNSMaolGS</repoToken>
         </configuration>
@@ -194,7 +218,7 @@
       <plugin>
         <groupId>com.coderplus.maven.plugins</groupId>
         <artifactId>copy-rename-maven-plugin</artifactId>
-        <version>1.0.1</version>
+        <version>${maven.copy.rename.plugin}</version>
         <executions>
           <execution>
             <id>copy-file</id>
@@ -206,26 +230,26 @@
               <fileSets>
                 <fileSet>
                   <sourceFile>${project.basedir}/pom.xml</sourceFile>
-                  <destinationFile>${project.build.directory}/dotenv-java-2.0.0.pom</destinationFile>
+                  <destinationFile>${project.build.directory}/dotenv-java-2.1.0.pom</destinationFile>
                 </fileSet>
               </fileSets>
             </configuration>
           </execution>
-<!--          <execution>-->
-<!--            <id>rename-dir</id>-->
-<!--            <phase>install</phase>-->
-<!--            <goals>-->
-<!--              <goal>rename</goal>-->
-<!--            </goals>-->
-<!--            <configuration>-->
-<!--              <fileSets>-->
-<!--                <fileSet>-->
-<!--                  <sourceFile>${project.build.directory}/apidocs/</sourceFile>-->
-<!--                  <destinationFile>${project.basedir}/docs/javadoc/</destinationFile>-->
-<!--                </fileSet>-->
-<!--              </fileSets>-->
-<!--            </configuration>-->
-<!--          </execution>-->
+          <!--          <execution>-->
+          <!--            <id>rename-dir</id>-->
+          <!--            <phase>install</phase>-->
+          <!--            <goals>-->
+          <!--              <goal>rename</goal>-->
+          <!--            </goals>-->
+          <!--            <configuration>-->
+          <!--              <fileSets>-->
+          <!--                <fileSet>-->
+          <!--                  <sourceFile>${project.build.directory}/apidocs/</sourceFile>-->
+          <!--                  <destinationFile>${project.basedir}/docs/javadoc/</destinationFile>-->
+          <!--                </fileSet>-->
+          <!--              </fileSets>-->
+          <!--            </configuration>-->
+          <!--          </execution>-->
         </executions>
       </plugin>
     </plugins>
