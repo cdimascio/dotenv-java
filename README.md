@@ -25,19 +25,21 @@ Use `dotenv.get("...")` instead of Java's `System.getenv(...)`.
 
 ## Install
 
+_Requires Java 8 or greater._
+
 ### Maven
 ```xml
 <dependency>
     <groupId>io.github.cdimascio</groupId>
     <artifactId>dotenv-java</artifactId>
-    <version>2.0.0</version>
+    <version>2.1.0</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```groovy
-compile 'io.github.cdimascio:dotenv-java:2.0.0'
+compile 'io.github.cdimascio:dotenv-java:2.1.0'
 ```
 
 Looking for the Kotlin variant? **get [dotenv-kotlin](https://github.com/cdimascio/dotenv-kotlin)**
