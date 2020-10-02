@@ -51,16 +51,24 @@
 
 
   <properties>
+    <main.class>io.github.cdimascio.dotenv.Dotenv</main.class>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
     <compile.source>1.8</compile.source>
     <compile.test.source>11</compile.test.source>
     <compile.javadoc.source>8</compile.javadoc.source>
 
-    <main.class>io.github.cdimascio.dotenv.Dotenv</main.class>
-    <junit.version>4.12</junit.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <javadoc.dir>docs/javadoc</javadoc.dir>
+
+    <junit.version>4.12</junit.version>
+
     <maven.source.plugin>3.0.1</maven.source.plugin>
     <maven.javadoc.plugin>3.2.0</maven.javadoc.plugin>
+    <maven.surefire.plugin>2.22.0</maven.surefire.plugin>
+    <maven.jacoco.plugin>0.8.6</maven.jacoco.plugin>
+    <maven.coveralls.plugin>4.3.0</maven.coveralls.plugin>
+    <maven.copy.rename.plugin>1.0.1</maven.copy.rename.plugin>
+
     <bintray.subject>cdimascio</bintray.subject>
     <bintray.repo>maven</bintray.repo>
     <bintray.package>dotenv-java</bintray.package>
@@ -121,11 +129,11 @@
         </executions>
       </plugin>
 
-      <!-- plugin for tets -->
+      <!-- plugin for tests -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.22.0</version>
+        <version>${maven.surefire.plugin}</version>
         <dependencies>
           <dependency>
             <groupId>org.apache.maven.surefire</groupId>
@@ -178,7 +186,7 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.6</version>
+        <version>${maven.jacoco.plugin}</version>
         <executions>
           <execution>
             <id>prepare-agent</id>
@@ -193,7 +201,7 @@
       <plugin>
         <groupId>org.eluder.coveralls</groupId>
         <artifactId>coveralls-maven-plugin</artifactId>
-        <version>4.3.0</version>
+        <version>${maven.coveralls.plugin}</version>
         <configuration>
           <repoToken>r92OLg0S3kCJakLAMW6HlLsDgNSMaolGS</repoToken>
         </configuration>
@@ -210,7 +218,7 @@
       <plugin>
         <groupId>com.coderplus.maven.plugins</groupId>
         <artifactId>copy-rename-maven-plugin</artifactId>
-        <version>1.0.1</version>
+        <version>${maven.copy.rename.plugin}</version>
         <executions>
           <execution>
             <id>copy-file</id>
