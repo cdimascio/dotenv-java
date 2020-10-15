@@ -3,13 +3,9 @@ package io.github.cdimascio.dotenv;
 import io.github.cdimascio.dotenv.internal.DotenvParser;
 import io.github.cdimascio.dotenv.internal.DotenvReader;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
-import static java.util.stream.Collectors.toMap;
-import static java.util.stream.Collectors.toUnmodifiableSet;
+import static java.util.stream.Collectors.*;
 
 /**
  * Builds and loads and {@link Dotenv} instance
@@ -97,11 +93,11 @@ public class DotenvBuilder {
 
             this.set =this.envVars.entrySet().stream()
                 .map(it -> new DotenvEntry(it.getKey(), it.getValue()))
-                .collect(toUnmodifiableSet());
+                .collect(collectingAndThen(toSet(), Collections::unmodifiableSet));
 
             this.setInFile =this.envVarsInFile.entrySet().stream()
                 .map(it -> new DotenvEntry(it.getKey(), it.getValue()))
-                .collect(toUnmodifiableSet());
+                .collect(collectingAndThen(toSet(), Collections::unmodifiableSet));
         }
 
         @Override
