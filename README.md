@@ -189,7 +189,7 @@ for (DotenvEntry e : dotenv.entries()) {
 - with [Maven (simple)](examples/maven-simple)
 - see [Java tests](./src/test/java/tests/DotenvTests.java) 
 
-## Idiomatic Framework Support
+## Cool libs that build on dotenv-java
 - Spring [spring-dotenv](https://github.com/paulschwarz/spring-dotenv) 
 
 ## Javadoc
