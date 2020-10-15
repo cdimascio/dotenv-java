@@ -189,8 +189,9 @@ for (DotenvEntry e : dotenv.entries()) {
 - with [Maven (simple)](examples/maven-simple)
 - see [Java tests](./src/test/java/tests/DotenvTests.java) 
 
-## Cool libs that build on dotenv-java
-- Spring [spring-dotenv](https://github.com/paulschwarz/spring-dotenv) 
+## Powered by dotenv-java
+- [spring-dotenv](https://github.com/paulschwarz/spring-dotenv) - dotenv-java as a Spring PropertySource
+- [dotenv-kotlin](https://github.com/cdimascio/kotlin-dotenv) - a Kotlin DSL for dotenv-java
 
 ## Javadoc
 
