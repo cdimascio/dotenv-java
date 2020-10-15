@@ -190,7 +190,7 @@ for (DotenvEntry e : dotenv.entries()) {
 - see [Java tests](./src/test/java/tests/DotenvTests.java) 
 
 ## Idiomatic Framework Support
-- Spring [https://github.com/paulschwarz/spring-dotenv](spring-dotenv)
+- Spring [spring-dotenv](https://github.com/paulschwarz/spring-dotenv) 
 
 ## Javadoc
 
