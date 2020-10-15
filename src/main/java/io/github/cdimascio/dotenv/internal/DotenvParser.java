@@ -5,10 +5,13 @@ import io.github.cdimascio.dotenv.DotenvException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static java.util.Collections.emptyList;
 
 public class DotenvParser {
     private final DotenvReader reader;
@@ -30,7 +33,7 @@ public class DotenvParser {
         List<DotenvEntry> entries = new ArrayList<>();
         for (String line : lines()) {
             String l = line.trim();
-            if (isWhiteSpace.apply(l) || isComment.apply(l) || l.isBlank()) continue;
+            if (isWhiteSpace.apply(l) || isComment.apply(l) || isBlank(l)) continue;
 
             DotenvEntry entry = parseLine.apply(l);
             if (entry == null) {
@@ -49,7 +52,7 @@ public class DotenvParser {
             return reader.read();
         } catch (DotenvException e) {
             if (throwIfMissing) throw e;
-            return List.of();
+            return emptyList();
         } catch (IOException e) {
             throw new DotenvException(e);
         }
@@ -74,5 +77,9 @@ public class DotenvParser {
         boolean result = matcher.matches();
         if (!result || matcher.groupCount() < 3) return null;
         return new DotenvEntry(matcher.group(1), matcher.group(3));
+    }
+
+    private boolean isBlank(String s) {
+        return s == null || s.trim().isEmpty();
     }
 }
