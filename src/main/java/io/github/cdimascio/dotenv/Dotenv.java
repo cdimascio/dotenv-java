@@ -10,7 +10,7 @@ public interface Dotenv {
     /**
      * A dotenv entry filter
      */
-    public enum Filter {
+    enum Filter {
         /**
          * Filter matching only environment variables declared in the .env file
          */
