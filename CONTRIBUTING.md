@@ -31,11 +31,11 @@ mvn test
 
 After your PR has been merged, add yourself as a contributor.
 
-To do sob, create a comment like the following on your PR:
+To do so, add a comment like the following to your PR:
 
-@all-contributors please add @username for code and test!
+>@all-contributors please add @username for code and test!
 
-Replace code with doc or test or infra or some combination depending on your contribution.
+_Replace code with doc or test or infra or some combination depending on your contribution._
 
 #### Package
 
