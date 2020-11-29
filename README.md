@@ -1,6 +1,6 @@
 # 🗝️ dotenv-java 
 
-![](https://travis-ci.org/cdimascio/dotenv-java.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/cdimascio/dotenv-java/badge.svg?branch=fixes)](https://coveralls.io/github/cdimascio/dotenv-java?branch=fixes) [![Maven Central](https://img.shields.io/maven-central/v/io.github.cdimascio/dotenv-java.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.cdimascio%22%20AND%20a:%22dotenv-java%22)  [ ![Download](https://api.bintray.com/packages/cdimascio/maven/dotenv-java/images/download.svg) ](https://bintray.com/cdimascio/maven/dotenv-java/_latestVersion) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66b8195f0da544f1ad9ed1352c0ea66f)](https://app.codacy.com/app/cdimascio/dotenv-java?utm_source=github.com&utm_medium=referral&utm_content=cdimascio/dotenv-java&utm_campaign=Badge_Grade_Dashboard) [![](https://img.shields.io/gitter/room/cdimascio-oss/community?color=%23eb205a)](https://gitter.im/cdimascio-oss/community) [![](https://img.shields.io/badge/doc-javadoc-blue)](https://cdimascio.github.io/dotenv-java/docs/javadoc/index.html) ![](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
+![](https://travis-ci.org/cdimascio/dotenv-java.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/cdimascio/dotenv-java/badge.svg?branch=fixes)](https://coveralls.io/github/cdimascio/dotenv-java?branch=fixes) [![Maven Central](https://img.shields.io/maven-central/v/io.github.cdimascio/dotenv-java.svg?label=Maven%20Central)](https://search.maven.org/artifact/io.github.cdimascio/dotenv-java)  [ ![Download](https://api.bintray.com/packages/cdimascio/maven/dotenv-java/images/download.svg) ](https://bintray.com/cdimascio/maven/dotenv-java/_latestVersion) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66b8195f0da544f1ad9ed1352c0ea66f)](https://app.codacy.com/app/cdimascio/dotenv-java?utm_source=github.com&utm_medium=referral&utm_content=cdimascio/dotenv-java&utm_campaign=Badge_Grade_Dashboard) [![](https://img.shields.io/gitter/room/cdimascio-oss/community?color=%23eb205a)](https://gitter.im/cdimascio-oss/community) [![](https://img.shields.io/badge/doc-javadoc-blue)](https://cdimascio.github.io/dotenv-java/docs/javadoc/index.html) ![](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
 
 A no-dependency, pure Java port of the Ruby dotenv project. Load environment variables from a `.env` file.
 
@@ -32,14 +32,14 @@ _Requires Java 8 or greater._
 <dependency>
     <groupId>io.github.cdimascio</groupId>
     <artifactId>dotenv-java</artifactId>
-    <version>2.1.0</version>
+    <version>2.2.0</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```groovy
-compile 'io.github.cdimascio:dotenv-java:2.1.0'
+compile 'io.github.cdimascio:dotenv-java:2.2.0'
 ```
 
 Looking for the Kotlin variant? **get [dotenv-kotlin](https://github.com/cdimascio/dotenv-kotlin)**
@@ -64,7 +64,7 @@ dotenv.get("MY_ENV_VAR1")
 ## Android Usage
 
 - Create an assets folder
-- Add `env` *(no dot)* to the assets folder.
+- Add `env` *(no dot)* to the assets folder
 
 	<img src="assets/android-dotenv.png" width="350">
 
@@ -188,6 +188,10 @@ for (DotenvEntry e : dotenv.entries()) {
 ## Examples
 - with [Maven (simple)](examples/maven-simple)
 - see [Java tests](./src/test/java/tests/DotenvTests.java) 
+
+## Powered by dotenv-java
+- [spring-dotenv](https://github.com/paulschwarz/spring-dotenv) - dotenv-java as a Spring PropertySource
+- [dotenv-kotlin](https://github.com/cdimascio/kotlin-dotenv) - a Kotlin DSL for dotenv-java
 
 ## Javadoc
 
