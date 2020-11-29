@@ -91,3 +91,4 @@ buildNumber.properties
 
 /sav
 .coveralls.yml
+.DS_Store
