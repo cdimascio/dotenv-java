@@ -8,6 +8,11 @@ public class DotenvEntry {
     private final String key;
     private final String value;
 
+    /**
+     * Creates a new dotenv entry using the provided key and value
+     * @param key
+     * @param value
+     */
     public DotenvEntry(String key, String value) {
         this.key = key;
         this.value = value;

@@ -3,7 +3,7 @@ package io.github.cdimascio.dotenv;
 import java.util.Set;
 
 /**
- * Creates and configures a new dotenv instance
+ * Creates and configures a new Dotenv instance
  */
 public interface Dotenv {
 
