@@ -2,28 +2,28 @@
 
 ## Develop
 
-#### 1. Fork this repo
+1. Fork this repo
 
-#### 2. Build the project
+2. Build the project
 
-```shell
-# java >=8 required
-export JAVA_HOME=/path/to/java8/home
+  ```shell
+  # java >=8 required
+  export JAVA_HOME=/path/to/java8/home
 
-mvn build
-```
+  mvn build
+  ```
 
-#### 3. Make a change
+3. Make a change
 
-fix a bug, add a feature, update the doc, etc
+  Fix a bug, add a feature, update the doc, etc
 
-#### 4. Run the Tests
+4. Run the Tests
 
-```shell
-mvn test
-```
+  ```shell
+  mvn test
+  ```
 
-#### 5. Create a Pull Request (PR)
+5. Create a Pull Request (PR)
 
 ## Add yourself as a contributor
 
