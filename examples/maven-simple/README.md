@@ -25,3 +25,6 @@ The program outputs the value of the env var `MY_ENV`. In this case, `MY_VALUE`
 ## License
 
 MIT
+
+_Note: This example is licensed under MIT. dotenv-java is licensed under Apache 2.0_
+
