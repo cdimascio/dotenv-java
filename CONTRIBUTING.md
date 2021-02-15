@@ -2,7 +2,7 @@
 
 ## Develop
 
-#### 1. Fork it
+#### 1. Fork this repo
 
 #### 2. Build the project
 
@@ -23,29 +23,27 @@ fix a bug, add a feature, update the doc, etc
 mvn test
 ```
 
-#### 5. Create a PR
+#### 5. Create a Pull Request (PR)
 
-## Misc
+## Add yourself as a contributor
 
-#### Add yourself as a contributor
-
-After your PR has been merged, add yourself as a contributor.
-
-To do so, add a comment like the following to your PR:
+Once your PR has been merged, add the following comment to your PR:
 
 >@all-contributors please add @username for code and test!
 
-_Replace code with doc or test or infra or some combination depending on your contribution._
+_Replace code and test with doc or test or infra or some combination depending on your contribution._
 
-#### Package
+## Package
 
-Contributors are not responsible for pushing packages to mavencentral and jcenter. Contributors are responsible for validating that the package step succeeds.
+Run the following to ensure the package step succeeds.
 
 ```shell
 mvn clean test jacoco:report package 
 ```
 
 ### Publish to Github Packages
+
+_Note: This step can only be run by maintainers._
 
 Add `distributionManagement` to `pom.xml`
 
