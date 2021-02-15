@@ -193,7 +193,7 @@ for (DotenvEntry e : dotenv.entries()) {
 - [spring-dotenv](https://github.com/paulschwarz/spring-dotenv) - dotenv-java as a Spring PropertySource
 - [dotenv-kotlin](https://github.com/cdimascio/kotlin-dotenv) - a Kotlin DSL for dotenv-java
 
-## Javadoc
+## [Javadoc](https://cdimascio.github.io/dotenv-java/docs/javadoc/)
 
 see [javadoc](https://cdimascio.github.io/dotenv-java/docs/javadoc/)
 
