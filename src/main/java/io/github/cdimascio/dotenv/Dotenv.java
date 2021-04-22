@@ -1,3 +1,8 @@
+/**
+ * dotenv-java
+ * copyright 2021 - Carmine DiMascio
+ * license - MIT
+ */
 package io.github.cdimascio.dotenv;
 
 import java.util.Set;
