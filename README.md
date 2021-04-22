@@ -42,7 +42,7 @@ _Requires Java 8 or greater._
 compile 'io.github.cdimascio:dotenv-java:2.2.0'
 ```
 
-Looking for the Kotlin variant? **get [dotenv-kotlin](https://github.com/cdimascio/dotenv-kotlin)**
+Looking for the Kotlin variant? **get [dotenv-kotlin](https://github.com/cdimascio/dotenv-kotlin)**.
 
 ## Usage
 Use `dotenv.get("...")` instead of Java's `System.getenv(...)`. Here's [why](#faq).
