@@ -20,7 +20,7 @@ mvn compile
 mvn exec:java -Dexec.mainClass="io.github.cdimascio.examples.dotenv.Main"
 ```
 
-The program outputs the value of the env var `MY_ENV`. In this case, `MY_VALUE`
+The program outputs the value of the environment var `MY_ENV`. In this case it's, `MY_VALUE`
 
 ## License
 
