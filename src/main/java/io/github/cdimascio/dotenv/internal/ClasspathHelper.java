@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
+/**
+ * Classpath helper
+ */
 public class ClasspathHelper {
     static Stream<String> loadFileFromClasspath(String location) {
         Class<ClasspathHelper> loader = ClasspathHelper.class;

@@ -5,7 +5,6 @@ import io.github.cdimascio.dotenv.DotenvException;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 import java.util.regex.Matcher;
@@ -13,6 +12,9 @@ import java.util.regex.Pattern;
 
 import static java.util.Collections.emptyList;
 
+/**
+ * (Internal) Parses .env file
+ */
 public class DotenvParser {
     private final DotenvReader reader;
     private final boolean throwIfMissing;
@@ -23,12 +25,23 @@ public class DotenvParser {
     private final Function<String, Boolean> isQuoted = s -> s.startsWith("\"") && s.endsWith("\"");
     private final Function<String, DotenvEntry> parseLine = s -> matchEntry("^\\s*([\\w.\\-]+)\\s*(=)\\s*(.*)?\\s*$", s); // ^\s*([\w.\-]+)\s*(=)\s*(.*)?\s*$
 
+    /**
+     * Creates a dotenv parser
+     * @param reader the dotenv reader
+     * @param throwIfMissing if true, throws when the .env file is missing
+     * @param throwIfMalformed if true, throws when the .env file is malformed
+     */
     public DotenvParser(DotenvReader reader, boolean throwIfMissing, boolean throwIfMalformed) {
         this.reader = reader;
         this.throwIfMissing = throwIfMissing;
         this.throwIfMalformed = throwIfMalformed;
     }
 
+    /**
+     * (Internal) parse the .env file
+     * @return a list of DotenvEntries
+     * @throws DotenvException if an error is encountered during the parse
+     */
     public List<DotenvEntry> parse() throws DotenvException {
         List<DotenvEntry> entries = new ArrayList<>();
         for (String line : lines()) {
