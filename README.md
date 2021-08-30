@@ -191,7 +191,7 @@ for (DotenvEntry e : dotenv.entries()) {
 
 ## Powered by dotenv-java
 - [spring-dotenv](https://github.com/paulschwarz/spring-dotenv) - dotenv-java as a Spring PropertySource
-- [dotenv-kotlin](https://github.com/cdimascio/kotlin-dotenv) - a Kotlin DSL for dotenv-java
+- [dotenv-kotlin](https://github.com/cdimascio/dotenv-kotlin) - a Kotlin DSL for dotenv-java
 
 ## [Javadoc](https://cdimascio.github.io/dotenv-java/docs/javadoc/)
 
