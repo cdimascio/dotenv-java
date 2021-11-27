@@ -8,7 +8,7 @@ import java.util.*;
 import static java.util.stream.Collectors.*;
 
 /**
- * Builds and loads and {@link Dotenv} instance
+ * Builds and loads and {@link Dotenv} instance.
  * @see Dotenv#configure()
  */
 public class DotenvBuilder {
@@ -19,7 +19,7 @@ public class DotenvBuilder {
     private boolean throwIfMalformed = true;
 
     /**
-     * Sets the directory containing the .env file
+     * Sets the directory containing the .env file.
      * @param path the directory containing the .env file
      * @return this {@link DotenvBuilder}
      */
@@ -28,7 +28,7 @@ public class DotenvBuilder {
         return this;
     }
     /**
-     * Sets the name of the .env file. The default is .env
+     * Sets the name of the .env file. The default is .env.
      * @param name the filename
      * @return this {@link DotenvBuilder}
      */
@@ -38,7 +38,7 @@ public class DotenvBuilder {
     }
 
     /**
-     * Does not throw an exception when .env is missing
+     * Does not throw an exception when .env is missing.
      * @return this {@link DotenvBuilder}
      */
     public DotenvBuilder ignoreIfMissing() {
@@ -47,7 +47,7 @@ public class DotenvBuilder {
     }
 
     /**
-     * Does not throw an exception when .env is malformed
+     * Does not throw an exception when .env is malformed.
      * @return this {@link DotenvBuilder}
      */
     public DotenvBuilder ignoreIfMalformed() {
@@ -56,7 +56,7 @@ public class DotenvBuilder {
     }
 
     /**
-     * Sets each environment variable as system properties
+     * Sets each environment variable as system properties.
      * @return this {@link DotenvBuilder}
      */
     public DotenvBuilder systemProperties() {
@@ -65,7 +65,7 @@ public class DotenvBuilder {
     }
 
     /**
-     * Load the contents of .env into the virtual environment
+     * Load the contents of .env into the virtual environment.
      * @return a new {@link Dotenv} instance
      * @throws DotenvException when an error occurs
      */
