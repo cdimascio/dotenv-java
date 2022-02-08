@@ -17,6 +17,7 @@ public class DotenvBuilder {
     private boolean systemProperties = false;
     private boolean throwIfMissing = true;
     private boolean throwIfMalformed = true;
+    private boolean recurse = false;
 
     /**
      * Sets the directory containing the .env file.
@@ -55,6 +56,16 @@ public class DotenvBuilder {
         return this;
     }
 
+
+    /**
+     * Recursively search parent directories for a .env file
+     * @return this {@link DotenvBuilder}
+     */
+    public DotenvBuilder recurseParents() {
+        recurse = true;
+        return this;
+    }
+
     /**
      * Sets each environment variable as system properties.
      * @return this {@link DotenvBuilder}
@@ -71,7 +82,7 @@ public class DotenvBuilder {
      */
     public Dotenv load() throws DotenvException {
         DotenvParser reader = new DotenvParser(
-            new DotenvReader(directoryPath, filename),
+            new DotenvReader(directoryPath, filename, recurse),
             throwIfMissing,
             throwIfMalformed);
         List<DotenvEntry> env = reader.parse();

@@ -17,15 +17,18 @@ import java.util.stream.Collectors;
 public class DotenvReader {
     private final String directory;
     private final String filename;
+    private final boolean recurse;
 
     /**
      * Creates a dotenv reader
      * @param directory the directory containing the .env file
      * @param filename the file name of the .env file e.g. .env
+     * @param recurse
      */
-    public DotenvReader(String directory, String filename) {
+    public DotenvReader(String directory, String filename, boolean recurse) {
         this.directory = directory;
         this.filename = filename;
+        this.recurse = recurse;
     }
 
     /**
@@ -50,6 +53,18 @@ public class DotenvReader {
             return Files
                 .lines(path)
                 .collect(Collectors.toList());
+        } else if (recurse) {
+            Path parent = path.getParent().getParent(); // get the parent of the parent of the current .env file
+            while (parent != null) {
+                Path fileInParent = parent.resolve(filename);  // resolve a .env file in it
+                if (Files.exists(fileInParent)) {
+                    return Files
+                        .lines(fileInParent)
+                        .collect(Collectors.toList());
+                } else {
+                    parent = parent.getParent();
+                }
+            }
         }
 
         try {
