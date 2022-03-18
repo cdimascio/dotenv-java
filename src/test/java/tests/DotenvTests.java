@@ -13,6 +13,7 @@ import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class DotenvTests {
@@ -113,5 +114,15 @@ public class DotenvTests {
             .load();
 
         assertNotNull(dotenv.get("PATH"));
+    }
+
+    @Test
+    public void configureWithIgnoreMalformedAndEmpty() {
+        Dotenv dotenv = Dotenv.configure()
+            .ignoreIfMalformed()
+            .ignoreEmpty()
+            .load();
+
+        assertNull(dotenv.get("WITHOUT_VALUE"));
     }
 }

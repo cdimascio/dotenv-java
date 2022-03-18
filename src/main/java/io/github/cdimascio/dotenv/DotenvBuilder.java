@@ -15,6 +15,7 @@ public class DotenvBuilder {
     private String filename = ".env";
     private String directoryPath = "./";
     private boolean systemProperties = false;
+    private boolean ignoreEmpty = false;
     private boolean throwIfMissing = true;
     private boolean throwIfMalformed = true;
 
@@ -34,6 +35,15 @@ public class DotenvBuilder {
      */
     public DotenvBuilder filename(String name) {
         filename = name;
+        return this;
+    }
+
+    /**
+     * Returns `null` for empty or blank values.
+     * @return this {@link DotenvBuilder}
+     */
+    public DotenvBuilder ignoreEmpty() {
+        ignoreEmpty = true;
         return this;
     }
 
@@ -72,6 +82,7 @@ public class DotenvBuilder {
     public Dotenv load() throws DotenvException {
         DotenvParser reader = new DotenvParser(
             new DotenvReader(directoryPath, filename),
+            ignoreEmpty,
             throwIfMissing,
             throwIfMalformed);
         List<DotenvEntry> env = reader.parse();

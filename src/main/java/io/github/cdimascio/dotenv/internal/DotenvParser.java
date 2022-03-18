@@ -17,6 +17,7 @@ import static java.util.Collections.emptyList;
  */
 public class DotenvParser {
     private final DotenvReader reader;
+    private final boolean ignoreEmtpy;
     private final boolean throwIfMissing;
     private final boolean throwIfMalformed;
 
@@ -28,11 +29,13 @@ public class DotenvParser {
     /**
      * Creates a dotenv parser
      * @param reader the dotenv reader
+     * @param ignoreEmpty if true, returns `null` for empty or blank values
      * @param throwIfMissing if true, throws when the .env file is missing
      * @param throwIfMalformed if true, throws when the .env file is malformed
      */
-    public DotenvParser(DotenvReader reader, boolean throwIfMissing, boolean throwIfMalformed) {
+    public DotenvParser(DotenvReader reader, boolean ignoreEmpty, boolean throwIfMissing, boolean throwIfMalformed) {
         this.reader = reader;
+        this.ignoreEmtpy = ignoreEmpty;
         this.throwIfMissing = throwIfMissing;
         this.throwIfMalformed = throwIfMalformed;
     }
@@ -55,6 +58,9 @@ public class DotenvParser {
             }
             String key = entry.getKey();
             String value = normalizeValue(entry.getValue());
+            if (value.isEmpty() && ignoreEmtpy) {
+                continue;
+            }
             entries.add(new DotenvEntry(key, value));
         }
         return entries;

@@ -172,6 +172,19 @@ for (DotenvEntry e : dotenv.entries()) {
 	  .load();
 	```
 
+### *optional* `ignoreEmpty`
+
+* Treat empty or blank values as `null`.
+
+  **example**
+
+  ```java
+  Dotenv
+    .configure()
+    .ignoreEmpty()
+    .load();
+  ```
+
 ### *optional* `systemProperties` 
 
 * Load environment variables into System properties, thus making all environment variables accessible via `System.getProperty(...)`
