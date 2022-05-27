@@ -68,32 +68,32 @@ public class BasicTests {
 
     @Test
     public void resourceAbsoluteDir() {
-        dirTest("/envdir","Simple Subdirectory");
+        assertDirectory("/envdir","Simple Subdirectory");
     }
 
     @Test
     public void resourceRelativeDir() {
-        dirTest("./envdir", "Simple Subdirectory");
+        assertDirectory("./envdir", "Simple Subdirectory");
     }
 
     @Test
     public void resourceUnanchoredDir() {
-        dirTest("envdir", "Simple Subdirectory");
+        assertDirectory("envdir", "Simple Subdirectory");
     }
 
     @Test
     public void resourceAbsoluteTrailingDotDir() {
-        dirTest("/trailingdot./envdir", "Trailing Dot Directory With Subdirectory");
+        assertDirectory("/trailingdot./envdir", "Trailing Dot Directory With Subdirectory");
     }
 
     @Test
     public void resourceRelativeTrailingDotDir() {
-        dirTest("./trailingdot./envdir", "Trailing Dot Directory With Subdirectory");
+        assertDirectory("./trailingdot./envdir", "Trailing Dot Directory With Subdirectory");
     }
 
     @Test
     public void resourceUnanchoredTrailingDotDir() {
-        dirTest("trailingdot./envdir", "Trailing Dot Directory With Subdirectory");
+        assertDirectory("trailingdot./envdir", "Trailing Dot Directory With Subdirectory");
     }
 
     @Test
@@ -160,9 +160,9 @@ public class BasicTests {
         assertNull(dotenv.get("MY_TEST_EV1"));
     }
 
-    private void dirTest(String path, String expected) {
+    private void assertDirectory(String directory, String expected) {
         var dotenv = Dotenv.configure()
-            .directory(path)
+            .directory(directory)
             .load();
         assertEquals(expected, dotenv.get("MY_TEST_EV1"));
     }
