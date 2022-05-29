@@ -54,7 +54,7 @@ public class DotenvReader {
 
         try {
             return ClasspathHelper
-                .loadFileFromClasspath(location.replaceFirst("./", "/"))
+                .loadFileFromClasspath(location.replaceFirst("^\\./", "/"))
                 .collect(Collectors.toList());
         } catch (DotenvException e) {
             Path cwd = FileSystems.getDefault().getPath(".").toAbsolutePath().normalize();

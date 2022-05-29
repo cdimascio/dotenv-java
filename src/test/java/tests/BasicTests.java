@@ -67,6 +67,36 @@ public class BasicTests {
     }
 
     @Test
+    public void resourceAbsoluteDir() {
+        assertDirectory("/envdir","Simple Subdirectory");
+    }
+
+    @Test
+    public void resourceRelativeDir() {
+        assertDirectory("./envdir", "Simple Subdirectory");
+    }
+
+    @Test
+    public void resourceUnanchoredDir() {
+        assertDirectory("envdir", "Simple Subdirectory");
+    }
+
+    @Test
+    public void resourceAbsoluteTrailingDotDir() {
+        assertDirectory("/trailingdot./envdir", "Trailing Dot Directory With Subdirectory");
+    }
+
+    @Test
+    public void resourceRelativeTrailingDotDir() {
+        assertDirectory("./trailingdot./envdir", "Trailing Dot Directory With Subdirectory");
+    }
+
+    @Test
+    public void resourceUnanchoredTrailingDotDir() {
+        assertDirectory("trailingdot./envdir", "Trailing Dot Directory With Subdirectory");
+    }
+
+    @Test
     public void resourceCurrent() {
         var dotenv = Dotenv.configure()
             .ignoreIfMalformed()
@@ -128,6 +158,13 @@ public class BasicTests {
         assertHostEnvVar(dotenv);
 
         assertNull(dotenv.get("MY_TEST_EV1"));
+    }
+
+    private void assertDirectory(String directory, String expected) {
+        var dotenv = Dotenv.configure()
+            .directory(directory)
+            .load();
+        assertEquals(expected, dotenv.get("MY_TEST_EV1"));
     }
 
     private void assertHostEnvVar(Dotenv env) {
