@@ -11,7 +11,7 @@
 
   <groupId>io.github.cdimascio</groupId>
   <artifactId>dotenv-java</artifactId>
-  <version>2.2.2</version>
+  <version>2.2.4</version>
 
   <licenses>
     <license>
@@ -230,7 +230,7 @@
               <fileSets>
                 <fileSet>
                   <sourceFile>${project.basedir}/pom.xml</sourceFile>
-                  <destinationFile>${project.build.directory}/dotenv-java-2.2.2.pom</destinationFile>
+                  <destinationFile>${project.build.directory}/dotenv-java-2.2.4.pom</destinationFile>
                 </fileSet>
               </fileSets>
             </configuration>
@@ -260,15 +260,15 @@
       <id>ossrh</id>
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
-<!--    <repository>-->
-<!--      <id>ossrh</id>-->
-<!--      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
-<!--    </repository>-->
     <repository>
-      <id>github</id>
-      <name>Carmine M DiMascio</name>
-      <url>https://maven.pkg.github.com/cdimascio/dotenv-java</url>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
     </repository>
+<!--    <repository>-->
+<!--      <id>github</id>-->
+<!--      <name>Carmine M DiMascio</name>-->
+<!--      <url>https://maven.pkg.github.com/cdimascio/dotenv-java</url>-->
+<!--    </repository>-->
   </distributionManagement>
   <profiles>
     <profile>
