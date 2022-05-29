@@ -69,6 +69,8 @@ where `5BE1414D5EAF81B48F2E77E1999F818C080AF9C1` is the public key
 mvn clean test jacoco:report package deploy -DperformRelease=true
 ```
 
+Navigate to https://oss.sonatype.org/#stagingRepositories, select repository, then press the `close` button, then  `release`
+
 ### Publish to Github Packages
 
 _Note: This step can only be run by maintainers._
