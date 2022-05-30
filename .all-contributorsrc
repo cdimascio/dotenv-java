@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "Mooninaut",
+      "name": "Clement Cherlin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1463364?v=4",
+      "profile": "https://github.com/Mooninaut",
+      "contributions": [
+        "code",
+        "test"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "dotenv-java",
+  "projectOwner": "cdimascio",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
