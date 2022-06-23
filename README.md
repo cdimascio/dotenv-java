@@ -39,10 +39,16 @@ _Requires Java 8 or greater._
 </dependency>
 ```
 
-### Gradle
+### Gradle <4.10
 
 ```groovy
 compile 'io.github.cdimascio:dotenv-java:2.2.4'
+```
+
+### Gradle >=4.10
+
+```groovy
+implementation 'io.github.cdimascio:dotenv-java:2.2.4'
 ```
 
 Looking for the Kotlin variant? **get [dotenv-kotlin](https://github.com/cdimascio/dotenv-kotlin)**.
