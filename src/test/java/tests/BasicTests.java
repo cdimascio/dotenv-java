@@ -178,4 +178,16 @@ public class BasicTests {
             assertEquals(expectedHome, actualHome);
         }
     }
+
+    @Test
+    public void parentDirectory() {
+        var dotenv = Dotenv.configure()
+            .directory("./src/test/resources/parent_demo")
+            .recurseParents()
+            .ignoreIfMalformed()
+            .load();
+        assertEquals("my test ev 1", dotenv.get("MY_TEST_EV1"));
+
+        assertHostEnvVar(dotenv);
+    }
 }
