@@ -14,6 +14,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "alexbraga",
+      "name": "Alex Braga",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61568124?v=4",
+      "profile": "https://github.com/alexbraga",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
