@@ -51,6 +51,12 @@ compile 'io.github.cdimascio:dotenv-java:2.2.4'
 implementation 'io.github.cdimascio:dotenv-java:2.2.4'
 ```
 
+### Gradle Kotlin DSL
+
+```kotlin
+implementation("io.github.cdimascio:dotenv-java:2.2.4")
+```
+
 Looking for the Kotlin variant? **get [dotenv-kotlin](https://github.com/cdimascio/dotenv-kotlin)**.
 
 ## Usage
