@@ -85,17 +85,17 @@ public class DotenvBuilder {
         private final Map<String, String> envVars;
         private final Set<DotenvEntry> set;
         private final Set<DotenvEntry> setInFile;
-        private final Map<String, String> envVarsInFile;
         public DotenvImpl(List<DotenvEntry> envVars) {
-            this.envVarsInFile = envVars.stream().collect(toMap(DotenvEntry::getKey, DotenvEntry::getValue));
-            this.envVars = new HashMap<>(this.envVarsInFile);
-            System.getenv().forEach(this.envVars::put);
+            Map<String, String> envVarsInFile = envVars.stream()
+                .collect(toMap(DotenvEntry::getKey, DotenvEntry::getValue));
+            this.envVars = new HashMap<>(envVarsInFile);
+            this.envVars.putAll(System.getenv());
 
-            this.set =this.envVars.entrySet().stream()
+            this.set = this.envVars.entrySet().stream()
                 .map(it -> new DotenvEntry(it.getKey(), it.getValue()))
                 .collect(collectingAndThen(toSet(), Collections::unmodifiableSet));
 
-            this.setInFile =this.envVarsInFile.entrySet().stream()
+            this.setInFile = envVarsInFile.entrySet().stream()
                 .map(it -> new DotenvEntry(it.getKey(), it.getValue()))
                 .collect(collectingAndThen(toSet(), Collections::unmodifiableSet));
         }
