@@ -1,7 +1,7 @@
 /**
  * dotenv-java
  * copyright 2021 - Carmine DiMascio
- * license - MIT
+ * license - Apache 2.0
  */
 package io.github.cdimascio.dotenv;
 
