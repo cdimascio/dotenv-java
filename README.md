@@ -82,7 +82,8 @@ dotenv.get("MY_ENV_VAR1")
 	```java
     Dotenv dotenv = Dotenv.configure()
        .directory("/assets")
-       .filename("env"); // instead of '.env', use 'env'
+       .filename("env") // instead of '.env', use 'env'
+       .load();
 
 	dotenv.get("MY_ENV_VAR1");
 	```
