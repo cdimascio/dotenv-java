@@ -52,6 +52,7 @@
 
   <properties>
     <main.class>io.github.cdimascio.dotenv.Dotenv</main.class>
+    <module.name>io.github.cdimascio.dotenv.java</module.name>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <compile.source>1.8</compile.source>
@@ -68,6 +69,7 @@
     <maven.jacoco.plugin>0.8.6</maven.jacoco.plugin>
     <maven.coveralls.plugin>4.3.0</maven.coveralls.plugin>
     <maven.copy.rename.plugin>1.0.1</maven.copy.rename.plugin>
+    <maven.moditect.plugin>1.0.0.RC2</maven.moditect.plugin>
 
     <bintray.subject>cdimascio</bintray.subject>
     <bintray.repo>maven</bintray.repo>
@@ -106,6 +108,34 @@
           <testSource>${compile.test.source}</testSource>
           <testTarget>${compile.test.source}</testTarget>
         </configuration>
+      </plugin>
+
+      <!-- add module-info -->
+      <plugin>
+        <groupId>org.moditect</groupId>
+        <artifactId>moditect-maven-plugin</artifactId>
+        <version>${maven.moditect.plugin}</version>
+        <executions>
+          <execution>
+            <id>add-module-info</id>
+            <phase>package</phase>
+            <goals>
+              <goal>add-module-info</goal>
+            </goals>
+            <configuration>
+              <module>
+                <moduleInfo>
+                  <name>${module.name}</name>
+                  <exports>
+                    !io.github.cdimascio.dotenv.internal*;
+                    *;
+                  </exports>
+                </moduleInfo>
+              </module>
+              <overwriteExistingFiles>true</overwriteExistingFiles>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
 
       <!-- delete the javadoc dir -->
