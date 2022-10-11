@@ -23,7 +23,8 @@ public class DotenvParser {
     private final Function<String, Boolean> isWhiteSpace = s -> matches("^\\s*$", s); // ^\s*${'$'}
     private final Function<String, Boolean> isComment = s -> s.startsWith("#") || s.startsWith("////");
     private final Function<String, Boolean> isQuoted = s -> s.startsWith("\"") && s.endsWith("\"");
-    private final Function<String, DotenvEntry> parseLine = s -> matchEntry("^\\s*([\\w.\\-]+)\\s*(=)\\s*(.*)?\\s*$", s); // ^\s*([\w.\-]+)\s*(=)\s*(.*)?\s*$
+    private final Function<String, DotenvEntry> parseLine =
+        s -> matchEntry("^\\s*([\\w.\\-]+)\\s*(=)\\s*([^#]*)?\\s*(#.*)?$", s);
 
     /**
      * Creates a dotenv parser

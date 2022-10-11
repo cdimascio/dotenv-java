@@ -15,6 +15,7 @@ public class BasicTests {
         put("MY_TEST_EV2", "my test ev 2");
         put("WITHOUT_VALUE", "");
         put("MULTI_LINE", "hello\\nworld");
+        put("TRAILING_COMMENT", "value");
     }};
 
     @Test(expected = DotenvException.class)
