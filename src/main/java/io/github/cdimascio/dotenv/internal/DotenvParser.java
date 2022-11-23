@@ -19,7 +19,7 @@ import static java.util.Collections.emptyList;
 public class DotenvParser {
 
     private static final Pattern WHITE_SPACE_REGEX = Pattern.compile("^\\s*$"); // ^\s*${'$'}
-    private static final Pattern DOTENV_ENTRY_REGEX = Pattern.compile("^\\s*([\\w.\\-]+)\\s*(=)\\s*(.*)?\\s*$"); // ^\s*([\w.\-]+)\s*(=)\s*(.*)?\s*$
+    private static final Pattern DOTENV_ENTRY_REGEX = Pattern.compile("^\\s*([\\w.\\-]+)\\s*(=)\\s*([^#]*)?\\s*(#.*)?$"); // ^\s*([\w.\-]+)\s*(=)\s*([^#]*)?\s*(#.*)?$
 
     private final DotenvReader reader;
     private final boolean throwIfMissing;
