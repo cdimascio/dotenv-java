@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,15 +17,18 @@ import static java.util.Collections.emptyList;
  * (Internal) Parses .env file
  */
 public class DotenvParser {
+
+    private static final Pattern WHITE_SPACE_REGEX = Pattern.compile("^\\s*$"); // ^\s*${'$'}
+    private static final Pattern DOTENV_ENTRY_REGEX = Pattern.compile("^\\s*([\\w.\\-]+)\\s*(=)\\s*([^#]*)?\\s*(#.*)?$"); // ^\s*([\w.\-]+)\s*(=)\s*([^#]*)?\s*(#.*)?$
+
     private final DotenvReader reader;
     private final boolean throwIfMissing;
     private final boolean throwIfMalformed;
 
-    private final Function<String, Boolean> isWhiteSpace = s -> matches("^\\s*$", s); // ^\s*${'$'}
-    private final Function<String, Boolean> isComment = s -> s.startsWith("#") || s.startsWith("////");
-    private final Function<String, Boolean> isQuoted = s -> s.startsWith("\"") && s.endsWith("\"");
-    private final Function<String, DotenvEntry> parseLine =
-        s -> matchEntry("^\\s*([\\w.\\-]+)\\s*(=)\\s*([^#]*)?\\s*(#.*)?$", s);
+    private final Predicate<String> isWhiteSpace = s -> matches(WHITE_SPACE_REGEX, s);
+    private final Predicate<String> isComment = s -> s.startsWith("#") || s.startsWith("////");
+    private final Predicate<String> isQuoted = s -> s.startsWith("\"") && s.endsWith("\"");
+    private final Function<String, DotenvEntry> parseLine = s -> matchEntry(DOTENV_ENTRY_REGEX, s);
 
     /**
      * Creates a dotenv parser
@@ -47,11 +51,11 @@ public class DotenvParser {
         List<DotenvEntry> entries = new ArrayList<>();
         for (String line : lines()) {
             String l = line.trim();
-            if (isWhiteSpace.apply(l) || isComment.apply(l) || isBlank(l)) continue;
+            if (isWhiteSpace.test(l) || isComment.test(l) || isBlank(l)) continue;
 
             DotenvEntry entry = parseLine.apply(l);
             if (entry == null) {
-                if (throwIfMalformed) throw new DotenvException("Malformed entry "+ l);
+                if (throwIfMalformed) throw new DotenvException("Malformed entry " + l);
                 continue;
             }
             String key = entry.getKey();
@@ -74,26 +78,24 @@ public class DotenvParser {
 
     private String normalizeValue(String value) {
         String tr = value.trim();
-        return isQuoted.apply(tr)
-            ? tr.substring(1, value.length() -1)
+        return isQuoted.test(tr)
+            ? tr.substring(1, value.length() - 1)
             : tr;
     }
 
-    private static boolean matches(String regex, String text) {
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(text);
+    private static boolean matches(Pattern regex, String text) {
+        Matcher matcher = regex.matcher(text);
         return matcher.matches();
     }
 
-    private static DotenvEntry matchEntry(String regex, String text) {
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(text);
+    private static DotenvEntry matchEntry(Pattern regex, String text) {
+        Matcher matcher = regex.matcher(text);
         boolean result = matcher.matches();
         if (!result || matcher.groupCount() < 3) return null;
         return new DotenvEntry(matcher.group(1), matcher.group(3));
     }
 
-    private boolean isBlank(String s) {
+    private static boolean isBlank(String s) {
         return s == null || s.trim().isEmpty();
     }
 }

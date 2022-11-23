@@ -52,6 +52,7 @@
 
   <properties>
     <main.class>io.github.cdimascio.dotenv.Dotenv</main.class>
+    <module.name>io.github.cdimascio.dotenv.java</module.name>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <compile.source>1.8</compile.source>
@@ -60,14 +61,17 @@
 
     <javadoc.dir>docs/javadoc</javadoc.dir>
 
-    <junit.version>4.12</junit.version>
+    <junit.version>4.13.2</junit.version>
 
+    <maven.enforcer.plugin>3.1.0</maven.enforcer.plugin>
+    <maven.compiler.plugin>3.5.1</maven.compiler.plugin>
     <maven.source.plugin>3.0.1</maven.source.plugin>
     <maven.javadoc.plugin>3.2.0</maven.javadoc.plugin>
     <maven.surefire.plugin>2.22.0</maven.surefire.plugin>
     <maven.jacoco.plugin>0.8.6</maven.jacoco.plugin>
     <maven.coveralls.plugin>4.3.0</maven.coveralls.plugin>
     <maven.copy.rename.plugin>1.0.1</maven.copy.rename.plugin>
+    <maven.moditect.plugin>1.0.0.RC2</maven.moditect.plugin>
 
     <bintray.subject>cdimascio</bintray.subject>
     <bintray.repo>maven</bintray.repo>
@@ -95,17 +99,73 @@
     <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
     <plugins>
 
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>${maven.enforcer.plugin}</version>
+        <executions>
+          <execution>
+            <id>display-info</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>display-info</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>enforce-java</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireJavaVersion>
+                  <version>11</version>
+                </requireJavaVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
       <!-- compile java 1.8 for lib and java 11 for tests-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.5.1</version>
+        <version>${maven.compiler.plugin}</version>
         <configuration>
           <source>${compile.source}</source>
           <target>${compile.source}</target>
           <testSource>${compile.test.source}</testSource>
           <testTarget>${compile.test.source}</testTarget>
         </configuration>
+      </plugin>
+
+      <!-- add module-info -->
+      <plugin>
+        <groupId>org.moditect</groupId>
+        <artifactId>moditect-maven-plugin</artifactId>
+        <version>${maven.moditect.plugin}</version>
+        <executions>
+          <execution>
+            <id>add-module-info</id>
+            <phase>package</phase>
+            <goals>
+              <goal>add-module-info</goal>
+            </goals>
+            <configuration>
+              <module>
+                <moduleInfo>
+                  <name>${module.name}</name>
+                  <exports>
+                    !io.github.cdimascio.dotenv.internal*;
+                    *;
+                  </exports>
+                </moduleInfo>
+              </module>
+              <overwriteExistingFiles>true</overwriteExistingFiles>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
 
       <!-- delete the javadoc dir -->

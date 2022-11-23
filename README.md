@@ -1,6 +1,6 @@
 # 🗝️ dotenv-java 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ![](https://travis-ci.org/cdimascio/dotenv-java.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/cdimascio/dotenv-java/badge.svg?branch=fixes)](https://coveralls.io/github/cdimascio/dotenv-java?branch=fixes) [![Maven Central](https://img.shields.io/maven-central/v/io.github.cdimascio/dotenv-java.svg?label=Maven%20Central)](https://search.maven.org/artifact/io.github.cdimascio/dotenv-java) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66b8195f0da544f1ad9ed1352c0ea66f)](https://app.codacy.com/app/cdimascio/dotenv-java?utm_source=github.com&utm_medium=referral&utm_content=cdimascio/dotenv-java&utm_campaign=Badge_Grade_Dashboard) [![](https://img.shields.io/gitter/room/cdimascio-oss/community?color=%23eb205a)](https://gitter.im/cdimascio-oss/community) [![](https://img.shields.io/badge/doc-javadoc-blue)](https://cdimascio.github.io/dotenv-java/docs/javadoc/index.html) ![](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
@@ -51,6 +51,12 @@ compile 'io.github.cdimascio:dotenv-java:2.2.4'
 implementation 'io.github.cdimascio:dotenv-java:2.2.4'
 ```
 
+### Gradle Kotlin DSL
+
+```kotlin
+implementation("io.github.cdimascio:dotenv-java:2.2.4")
+```
+
 Looking for the Kotlin variant? **get [dotenv-kotlin](https://github.com/cdimascio/dotenv-kotlin)**.
 
 ## Usage
@@ -82,7 +88,8 @@ dotenv.get("MY_ENV_VAR1")
 	```java
     Dotenv dotenv = Dotenv.configure()
        .directory("/assets")
-       .filename("env"); // instead of '.env', use 'env'
+       .filename("env") // instead of '.env', use 'env'
+       .load();
 
 	dotenv.get("MY_ENV_VAR1");
 	```
@@ -274,6 +281,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/Mooninaut"><img src="https://avatars.githubusercontent.com/u/1463364?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Clement Cherlin</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-java/commits?author=Mooninaut" title="Code">💻</a> <a href="https://github.com/cdimascio/dotenv-java/commits?author=Mooninaut" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/alexbraga"><img src="https://avatars.githubusercontent.com/u/61568124?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alex Braga</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-java/commits?author=alexbraga" title="Documentation">📖</a></td>
   </tr>
 </table>
 

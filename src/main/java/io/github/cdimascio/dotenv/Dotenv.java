@@ -1,7 +1,7 @@
 /**
  * dotenv-java
  * copyright 2021 - Carmine DiMascio
- * license - MIT
+ * license - Apache 2.0
  */
 package io.github.cdimascio.dotenv;
 
@@ -45,7 +45,7 @@ public interface Dotenv {
     Set<DotenvEntry> entries();
 
     /**
-     * Returns the set of {@link DotenvEntry}s matching the the filter
+     * Returns the set of {@link DotenvEntry}s matching the filter
      * @param filter the filter e.g. {@link Dotenv.Filter}
      * @return the set of {@link DotenvEntry}s for environment variables matching the {@link Dotenv.Filter}
      */
