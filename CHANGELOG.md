@@ -1,5 +1,16 @@
 ##  (2022-11-23)
 
+* Support trailing comments (#38) ([45f25e2](https://github.com/cdimascio/dotenv-java/commit/45f25e2)), closes [#38](https://github.com/cdimascio/dotenv-java/issues/38) [/github.com/bkeepers/dotenv/blob/master/lib/dotenv/parser.rb#L14-L30](https://github.com//github.com/bkeepers/dotenv/blob/master/lib/dotenv/parser.rb/issues/L14-L30)
+* Update README.md ([74bbe2c](https://github.com/cdimascio/dotenv-java/commit/74bbe2c))
+* Update README.md ([7166200](https://github.com/cdimascio/dotenv-java/commit/7166200))
+* docs: add c00ler as a contributor for code (#39) ([e52b498](https://github.com/cdimascio/dotenv-java/commit/e52b498)), closes [#39](https://github.com/cdimascio/dotenv-java/issues/39)
+* docs: add dizney as a contributor for code, and doc (#41) ([6d1c1cf](https://github.com/cdimascio/dotenv-java/commit/6d1c1cf)), closes [#41](https://github.com/cdimascio/dotenv-java/issues/41)
+* docs: add yassenb as a contributor for code (#40) ([4430c0f](https://github.com/cdimascio/dotenv-java/commit/4430c0f)), closes [#40](https://github.com/cdimascio/dotenv-java/issues/40)
+
+
+
+##  (2022-11-23)
+
 * Ensure java 11 using enforcer plugin (#35) ([c2c69fc](https://github.com/cdimascio/dotenv-java/commit/c2c69fc)), closes [#35](https://github.com/cdimascio/dotenv-java/issues/35)
 * Fix classpath relative-to-absolute conversion in DotenvReader (#27) ([6dc4c52](https://github.com/cdimascio/dotenv-java/commit/6dc4c52)), closes [#27](https://github.com/cdimascio/dotenv-java/issues/27)
 * Fix license in the header (#34) ([d253407](https://github.com/cdimascio/dotenv-java/commit/d253407)), closes [#34](https://github.com/cdimascio/dotenv-java/issues/34)
