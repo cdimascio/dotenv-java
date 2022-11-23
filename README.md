@@ -281,6 +281,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="https://github.com/Mooninaut"><img src="https://avatars.githubusercontent.com/u/1463364?v=4?s=100" width="100px;" alt="Clement Cherlin"/><br /><sub><b>Clement Cherlin</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-java/commits?author=Mooninaut" title="Code">💻</a> <a href="https://github.com/cdimascio/dotenv-java/commits?author=Mooninaut" title="Tests">⚠️</a></td>
       <td align="center"><a href="https://github.com/alexbraga"><img src="https://avatars.githubusercontent.com/u/61568124?v=4?s=100" width="100px;" alt="Alex Braga"/><br /><sub><b>Alex Braga</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-java/commits?author=alexbraga" title="Documentation">📖</a></td>
       <td align="center"><a href="https://github.com/c00ler"><img src="https://avatars.githubusercontent.com/u/1210272?v=4?s=100" width="100px;" alt="Alexey Venderov"/><br /><sub><b>Alexey Venderov</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-java/commits?author=c00ler" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/yassenb"><img src="https://avatars.githubusercontent.com/u/531223?v=4?s=100" width="100px;" alt="yassenb"/><br /><sub><b>yassenb</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-java/commits?author=yassenb" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
