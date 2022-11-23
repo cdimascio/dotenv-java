@@ -282,6 +282,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="https://github.com/alexbraga"><img src="https://avatars.githubusercontent.com/u/61568124?v=4?s=100" width="100px;" alt="Alex Braga"/><br /><sub><b>Alex Braga</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-java/commits?author=alexbraga" title="Documentation">📖</a></td>
       <td align="center"><a href="https://github.com/c00ler"><img src="https://avatars.githubusercontent.com/u/1210272?v=4?s=100" width="100px;" alt="Alexey Venderov"/><br /><sub><b>Alexey Venderov</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-java/commits?author=c00ler" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/yassenb"><img src="https://avatars.githubusercontent.com/u/531223?v=4?s=100" width="100px;" alt="yassenb"/><br /><sub><b>yassenb</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-java/commits?author=yassenb" title="Code">💻</a></td>
+      <td align="center"><a href="https://sidney.beekhoven.nl"><img src="https://avatars.githubusercontent.com/u/903673?v=4?s=100" width="100px;" alt="Sidney Beekhoven"/><br /><sub><b>Sidney Beekhoven</b></sub></a><br /><a href="https://github.com/cdimascio/dotenv-java/commits?author=dizney" title="Code">💻</a> <a href="https://github.com/cdimascio/dotenv-java/commits?author=dizney" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>

@@ -41,6 +41,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "dizney",
+      "name": "Sidney Beekhoven",
+      "avatar_url": "https://avatars.githubusercontent.com/u/903673?v=4",
+      "profile": "https://sidney.beekhoven.nl",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
