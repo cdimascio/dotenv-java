@@ -35,26 +35,26 @@ _Requires Java 8 or greater._
 <dependency>
     <groupId>io.github.cdimascio</groupId>
     <artifactId>dotenv-java</artifactId>
-    <version>2.2.4</version>
+    <version>2.3.0</version>
 </dependency>
 ```
 
 ### Gradle <4.10
 
 ```groovy
-compile 'io.github.cdimascio:dotenv-java:2.2.4'
+compile 'io.github.cdimascio:dotenv-java:2.3.0'
 ```
 
 ### Gradle >=4.10
 
 ```groovy
-implementation 'io.github.cdimascio:dotenv-java:2.2.4'
+implementation 'io.github.cdimascio:dotenv-java:2.3.0'
 ```
 
 ### Gradle Kotlin DSL
 
 ```kotlin
-implementation("io.github.cdimascio:dotenv-java:2.2.4")
+implementation("io.github.cdimascio:dotenv-java:2.3.0")
 ```
 
 Looking for the Kotlin variant? **get [dotenv-kotlin](https://github.com/cdimascio/dotenv-kotlin)**.
