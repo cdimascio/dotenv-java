@@ -47,9 +47,7 @@ public class DotenvReader {
             : Paths.get(location);
 
         if (Files.exists(path)) {
-            return Files
-                .lines(path)
-                .collect(Collectors.toList());
+            return Files.readAllLines(path);
         }
 
         try {

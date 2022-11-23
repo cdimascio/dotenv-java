@@ -60,7 +60,7 @@
 
     <javadoc.dir>docs/javadoc</javadoc.dir>
 
-    <junit.version>4.12</junit.version>
+    <junit.version>4.13.2</junit.version>
 
     <maven.source.plugin>3.0.1</maven.source.plugin>
     <maven.javadoc.plugin>3.2.0</maven.javadoc.plugin>
