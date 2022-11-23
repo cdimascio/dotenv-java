@@ -23,6 +23,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "c00ler",
+      "name": "Alexey Venderov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1210272?v=4",
+      "profile": "https://github.com/c00ler",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -30,5 +39,6 @@
   "projectOwner": "cdimascio",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "angular"
 }
