@@ -62,6 +62,8 @@
 
     <junit.version>4.13.2</junit.version>
 
+    <maven.enforcer.plugin>3.1.0</maven.enforcer.plugin>
+    <maven.compiler.plugin>3.5.1</maven.compiler.plugin>
     <maven.source.plugin>3.0.1</maven.source.plugin>
     <maven.javadoc.plugin>3.2.0</maven.javadoc.plugin>
     <maven.surefire.plugin>2.22.0</maven.surefire.plugin>
@@ -95,11 +97,39 @@
     <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
     <plugins>
 
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>${maven.enforcer.plugin}</version>
+        <executions>
+          <execution>
+            <id>display-info</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>display-info</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>enforce-java</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireJavaVersion>
+                  <version>11</version>
+                </requireJavaVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
       <!-- compile java 1.8 for lib and java 11 for tests-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.5.1</version>
+        <version>${maven.compiler.plugin}</version>
         <configuration>
           <source>${compile.source}</source>
           <target>${compile.source}</target>
