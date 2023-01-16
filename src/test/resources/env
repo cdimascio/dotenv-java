@@ -4,6 +4,7 @@ MY_TEST_EV2=my test ev 2
 WITHOUT_VALUE=
 MULTI_LINE=hello\nworld
 TRAILING_COMMENT=value # comment
+QUOTED_VALUE="iH4>hb_d0#_GN8d]6" # comment "test"
 
 ## Malformed EV!
 MY_TEST_EV3

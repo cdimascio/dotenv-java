@@ -16,6 +16,7 @@ public class BasicTests {
         put("WITHOUT_VALUE", "");
         put("MULTI_LINE", "hello\\nworld");
         put("TRAILING_COMMENT", "value");
+        put("QUOTED_VALUE", "iH4>hb_d0#_GN8d]6");
     }};
 
     @Test(expected = DotenvException.class)
