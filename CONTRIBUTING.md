@@ -45,12 +45,6 @@ mvn clean test jacoco:report package
 
 Contributors are not responsible for deploying to mavencentral.
 
-```shell
-
-mvn clean dokka:javadocJar deploy
-
-```
-
 **Maven Central**
 
 - Publish with Maven - https://central.sonatype.org/publish/publish-maven/
@@ -90,6 +84,9 @@ Add `distributionManagement` to `pom.xml`
 ```shell
 # deploy to github packages
 mvn deploy -Dregistry=https://maven.pkg.github.com/cdimascio -Dtoken=XXXX
+# or
+mvn clean test jacoco:report package deploy  -Dregistry=https://maven.pkg.github.com/cdimascio -Dtoken=XXXX
+
 ```
 
 https://docs.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-apache-maven-for-use-with-github-packages
