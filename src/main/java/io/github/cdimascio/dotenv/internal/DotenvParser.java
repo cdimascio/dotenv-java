@@ -19,7 +19,17 @@ import static java.util.Collections.emptyList;
 public class DotenvParser {
 
     private static final Pattern WHITE_SPACE_REGEX = Pattern.compile("^\\s*$"); // ^\s*${'$'}
-    private static final Pattern DOTENV_ENTRY_REGEX = Pattern.compile("^\\s*([\\w.\\-]+)\\s*(=)\\s*([^#]*)?\\s*(#.*)?$"); // ^\s*([\w.\-]+)\s*(=)\s*([^#]*)?\s*(#.*)?$
+
+    // The follow regex matches key values.
+    // It supports quoted values surrounded by single or double quotes
+    // -  Single quotes: ['][^']*[']
+    //    The above regex snippet matches a value wrapped in single quotes.
+    //    The regex snippet does not match internal single quotes. This is present to allow the trailing comment to include single quotes
+    // -  Double quotes: same logic as single quotes
+    // It ignore trailing comments
+    // - Trailing comment: \s*(#.*)?$
+    //   The above snippet ignore spaces, the captures the # and the trailing comment
+    private static final Pattern DOTENV_ENTRY_REGEX = Pattern.compile("^\\s*([\\w.\\-]+)\\s*(=)\\s*(['][^']*[']|[\"][^\"]*[\"]|[^#]*)?\\s*(#.*)?$"); //"^\\s*([\\w.\\-]+)\\s*(=)\\s*([^#]*)?\\s*(#.*)?$"); // ^\s*([\w.\-]+)\s*(=)\s*([^#]*)?\s*(#.*)?$
 
     private final DotenvReader reader;
     private final boolean throwIfMissing;
