@@ -1,3 +1,12 @@
+##  (2023-01-16)
+
+* Implements support for quoted values (#46) ([bbfbcfa](https://github.com/cdimascio/dotenv-java/commit/bbfbcfa)), closes [#46](https://github.com/cdimascio/dotenv-java/issues/46)
+* update dependency ([c016121](https://github.com/cdimascio/dotenv-java/commit/c016121))
+* Update README.md ([006fc25](https://github.com/cdimascio/dotenv-java/commit/006fc25))
+* use v2.3.0 in example ([1261b9e](https://github.com/cdimascio/dotenv-java/commit/1261b9e))
+* v2.3.2 ([d318ce4](https://github.com/cdimascio/dotenv-java/commit/d318ce4))
+* v2.3.2 ([6cb8616](https://github.com/cdimascio/dotenv-java/commit/6cb8616))
+
 ##  (2022-11-23)
 
 * Support trailing comments (#38) ([45f25e2](https://github.com/cdimascio/dotenv-java/commit/45f25e2)), closes [#38](https://github.com/cdimascio/dotenv-java/issues/38) [/github.com/bkeepers/dotenv/blob/master/lib/dotenv/parser.rb#L14-L30](https://github.com//github.com/bkeepers/dotenv/blob/master/lib/dotenv/parser.rb/issues/L14-L30)
@@ -6,8 +15,6 @@
 * docs: add c00ler as a contributor for code (#39) ([e52b498](https://github.com/cdimascio/dotenv-java/commit/e52b498)), closes [#39](https://github.com/cdimascio/dotenv-java/issues/39)
 * docs: add dizney as a contributor for code, and doc (#41) ([6d1c1cf](https://github.com/cdimascio/dotenv-java/commit/6d1c1cf)), closes [#41](https://github.com/cdimascio/dotenv-java/issues/41)
 * docs: add yassenb as a contributor for code (#40) ([4430c0f](https://github.com/cdimascio/dotenv-java/commit/4430c0f)), closes [#40](https://github.com/cdimascio/dotenv-java/issues/40)
-
-
 
 ##  (2022-11-23)
 
