@@ -113,22 +113,20 @@ public class DotenvBuilder {
 
         @Override
         public Set<DotenvEntry> entries(final Dotenv.Filter filter) {
-            if (filter != null)
-                return setInFile;
+            return filter == null ? entries() : setInFile;
 
-            return entries();
         }
 
         @Override
         public String get(final String key) {
             final String value = System.getenv(key);
-            return value != null ? value : envVars.get(key);
+            return value == null ? envVars.get(key) : value;
         }
 
         @Override
         public String get(String key, String defaultValue) {
             final String value = this.get(key);
-            return value != null ? value : defaultValue;
+            return value == null ? defaultValue : value;
         }
     }
 }
