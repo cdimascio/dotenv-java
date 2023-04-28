@@ -290,7 +290,7 @@
               <fileSets>
                 <fileSet>
                   <sourceFile>${project.basedir}/pom.xml</sourceFile>
-                  <destinationFile>${project.build.directory}/dotenv-java-2.2.4.pom</destinationFile>
+                  <destinationFile>${project.build.directory}/${project.artifactId}-${project.version}.pom</destinationFile>
                 </fileSet>
               </fileSets>
             </configuration>
