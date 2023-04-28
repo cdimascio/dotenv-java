@@ -57,8 +57,9 @@ public class DotenvParser {
      * @throws DotenvException if an error is encountered during the parse
      */
     public List<DotenvEntry> parse() throws DotenvException {
-        final var entries = new ArrayList<DotenvEntry>();
-        for (final var line : lines()) {
+        final var lines = lines();
+        final var entries = new ArrayList<DotenvEntry>(lines.size());
+        for (final var line : lines) {
             addNewEntry(entries, line.trim());
         }
 
