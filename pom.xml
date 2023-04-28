@@ -67,7 +67,6 @@
     <maven.javadoc.plugin>3.5.0</maven.javadoc.plugin>
     <maven.surefire.plugin>3.0.0</maven.surefire.plugin>
     <maven.jacoco.plugin>0.8.10</maven.jacoco.plugin>
-    <maven.coveralls.plugin>4.3.0</maven.coveralls.plugin>
     <maven.copy.rename.plugin>1.0.1</maven.copy.rename.plugin>
     <maven.moditect.plugin>1.0.0.RC3</maven.moditect.plugin>
 
@@ -246,23 +245,6 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-
-      <!-- Send to coveralls -->
-      <plugin>
-        <groupId>org.eluder.coveralls</groupId>
-        <artifactId>coveralls-maven-plugin</artifactId>
-        <version>${maven.coveralls.plugin}</version>
-        <configuration>
-          <repoToken>r92OLg0S3kCJakLAMW6HlLsDgNSMaolGS</repoToken>
-        </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.2.3</version>
-          </dependency>
-        </dependencies>
       </plugin>
 
       <!-- copy pom to target -->
