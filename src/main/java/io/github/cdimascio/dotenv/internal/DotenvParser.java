@@ -59,24 +59,26 @@ public class DotenvParser {
     public List<DotenvEntry> parse() throws DotenvException {
         final var entries = new ArrayList<DotenvEntry>();
         for (final var line : lines()) {
-            final var l = line.trim();
-            if (isWhiteSpace.test(l) || isComment.test(l) || isBlank(l))
-                continue;
-
-            final var entry = parseLine.apply(l);
-            if (entry == null) {
-                if (throwIfMalformed)
-                    throw new DotenvException("Malformed entry " + l);
-                continue;
-            }
-
-            final var key = entry.getKey();
-            final var value = normalizeValue(entry.getValue());
-            final var newEntry = new DotenvEntry(key, value);
-            entries.add(newEntry);
+            addNewEntry(entries, line.trim());
         }
 
         return entries;
+    }
+
+    private void addNewEntry(final List<DotenvEntry> entries, final String line) {
+        if (isWhiteSpace.test(line) || isComment.test(line) || isBlank(line))
+            return;
+
+        final var entry = parseLine.apply(line);
+        if (entry == null) {
+            if (throwIfMalformed)
+                throw new DotenvException("Malformed entry " + line);
+            return;
+        }
+
+        final var key = entry.getKey();
+        final var value = normalizeValue(entry.getValue());
+        entries.add(new DotenvEntry(key, value));
     }
 
     private List<String> lines() throws DotenvException {
