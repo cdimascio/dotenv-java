@@ -1,16 +1,16 @@
 package tests;
 
-import io.github.cdimascio.dotenv.DotenvException;
 import io.github.cdimascio.dotenv.Dotenv;
-import org.junit.Test;
+import io.github.cdimascio.dotenv.DotenvException;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class BasicTests {
-    private Map<String, String> envVars = new HashMap<>() {{
+class BasicTests {
+    private final Map<String, String> envVars = new HashMap<>() {{
         put("MY_TEST_EV1", "my test ev 1");
         put("MY_TEST_EV2", "my test ev 2");
         put("WITHOUT_VALUE", "");
@@ -19,98 +19,88 @@ public class BasicTests {
         put("QUOTED_VALUE", "iH4>hb_d0#_GN8d]6");
     }};
 
-    @Test(expected = DotenvException.class)
-    public void dotenvMalformed() {
-        Dotenv.configure()
-            .directory("./src/test/resources")
-            .load();
+    @Test
+    void dotenvMalformed() {
+        assertThrows(DotenvException.class, () -> Dotenv.configure().directory("./src/test/resources").load());
     }
 
     @Test
-    public void dotenvIgnoreMalformed() {
-        var dotenv = Dotenv.configure()
+    void dotenvIgnoreMalformed() {
+        final var dotenv = Dotenv.configure()
             .directory("./src/test/resources")
             .ignoreIfMalformed()
             .load();
 
-        envVars.forEach((key, expected) -> {
-            var actual = dotenv.get(key);
-            assertEquals(expected, actual);
-        });
-
+        envVars.forEach((key, expected) -> assertEquals(expected, dotenv.get(key)));
         assertHostEnvVar(dotenv);
     }
 
     @Test
-    public void dotenvFilename() {
-        var dotenv = Dotenv.configure()
+    void dotenvFilename() {
+        final var dotenv = Dotenv.configure()
             .directory("./src/test/resources")
             .filename("env")
             .ignoreIfMalformed()
             .load();
 
-        envVars.forEach((key, expected) -> {
-            var actual = dotenv.get(key);
-            assertEquals(expected, actual);
-        });
-
+        envVars.forEach((key, expected) -> assertEquals(expected, dotenv.get(key)));
         assertHostEnvVar(dotenv);
     }
 
     @Test
-    public void resourceRelative() {
-        var dotenv = Dotenv.configure()
+    void resourceRelative() {
+        final var dotenv = Dotenv.configure()
             .directory("./")
             .ignoreIfMalformed()
             .load();
-        assertEquals("my test ev 1", dotenv.get("MY_TEST_EV1"));
 
+        assertEquals("my test ev 1", dotenv.get("MY_TEST_EV1"));
         assertHostEnvVar(dotenv);
     }
 
     @Test
-    public void resourceAbsoluteDir() {
+    void resourceAbsoluteDir() {
         assertDirectory("/envdir","Simple Subdirectory");
     }
 
     @Test
-    public void resourceRelativeDir() {
+    void resourceRelativeDir() {
         assertDirectory("./envdir", "Simple Subdirectory");
     }
 
     @Test
-    public void resourceUnanchoredDir() {
+    void resourceUnanchoredDir() {
         assertDirectory("envdir", "Simple Subdirectory");
     }
 
     @Test
-    public void resourceAbsoluteTrailingDotDir() {
+    void resourceAbsoluteTrailingDotDir() {
         assertDirectory("/trailingdot./envdir", "Trailing Dot Directory With Subdirectory");
     }
 
     @Test
-    public void resourceRelativeTrailingDotDir() {
+    void resourceRelativeTrailingDotDir() {
         assertDirectory("./trailingdot./envdir", "Trailing Dot Directory With Subdirectory");
     }
 
     @Test
-    public void resourceUnanchoredTrailingDotDir() {
+    void resourceUnanchoredTrailingDotDir() {
         assertDirectory("trailingdot./envdir", "Trailing Dot Directory With Subdirectory");
     }
 
     @Test
-    public void resourceCurrent() {
-        var dotenv = Dotenv.configure()
+    void resourceCurrent() {
+        final var dotenv = Dotenv.configure()
             .ignoreIfMalformed()
             .load();
-        assertEquals("my test ev 1", dotenv.get("MY_TEST_EV1"));
 
+        assertEquals("my test ev 1", dotenv.get("MY_TEST_EV1"));
         assertHostEnvVar(dotenv);
     }
 
     @Test
-    public void systemProperties() {
-        var dotenv = Dotenv.configure()
+    void systemProperties() {
+        final var dotenv = Dotenv.configure()
             .ignoreIfMalformed()
             .systemProperties()
             .load();
@@ -122,8 +112,8 @@ public class BasicTests {
     }
 
     @Test
-    public void noSystemProperties() {
-        var dotenv = Dotenv.configure()
+    void noSystemProperties() {
+        final var dotenv = Dotenv.configure()
             .ignoreIfMalformed()
             .load();
 
@@ -133,50 +123,47 @@ public class BasicTests {
     }
 
     @Test
-    public void iterateOverDotenv() {
-        var dotenv = Dotenv.configure()
+    void iterateOverDotenv() {
+        final var dotenv = Dotenv.configure()
             .ignoreIfMalformed()
             .load();
 
-        for (var e : dotenv.entries()) {
+        for (final var e : dotenv.entries()) {
             assertEquals(dotenv.get(e.getKey()), e.getValue());
         }
     }
 
-    @Test(expected = DotenvException.class)
-    public void dotenvMissing() {
-        Dotenv.configure()
-            .directory("/missing/.env")
-            .load();
+    @Test
+    void dotenvMissing() {
+         assertThrows(DotenvException.class, () -> Dotenv.configure().directory("/missing/.env").load());
     }
 
     @Test
-    public void dotenvIgnoreMissing() {
-        var dotenv = Dotenv.configure()
+    void dotenvIgnoreMissing() {
+        final var dotenv = Dotenv.configure()
             .directory("/missing/.env")
             .ignoreIfMissing()
             .load();
 
         assertHostEnvVar(dotenv);
-
         assertNull(dotenv.get("MY_TEST_EV1"));
     }
 
-    private void assertDirectory(String directory, String expected) {
-        var dotenv = Dotenv.configure()
+    private void assertDirectory(final String directory, final String expected) {
+        final var dotenv = Dotenv.configure()
             .directory(directory)
             .load();
+
         assertEquals(expected, dotenv.get("MY_TEST_EV1"));
     }
 
-    private void assertHostEnvVar(Dotenv env) {
-        var isWindows = System.getProperty("os.name").toLowerCase().contains("win");
-        if (isWindows) {
-            var path = env.get("PATH");
-            assertNotNull(path);
-        } else {
-            var expectedHome = System.getProperty("user.home");
-            var actualHome = env.get("HOME");
+    private void assertHostEnvVar(final Dotenv env) {
+        final var isWindows = System.getProperty("os.name").toLowerCase().contains("win");
+        if (isWindows)
+            assertNotNull(env.get("PATH"));
+        else {
+            final var expectedHome = System.getProperty("user.home");
+            final var actualHome = env.get("HOME");
             assertEquals(expectedHome, actualHome);
         }
     }

@@ -11,7 +11,7 @@
 
   <groupId>io.github.cdimascio</groupId>
   <artifactId>dotenv-java</artifactId>
-  <version>2.3.2</version>
+  <version>2.4.0</version>
 
   <licenses>
     <license>
@@ -55,23 +55,20 @@
     <module.name>io.github.cdimascio.dotenv.java</module.name>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <compile.source>1.8</compile.source>
-    <compile.test.source>11</compile.test.source>
-    <compile.javadoc.source>8</compile.javadoc.source>
+    <maven.compiler.release>11</maven.compiler.release>
 
     <javadoc.dir>docs/javadoc</javadoc.dir>
 
-    <junit.version>4.13.2</junit.version>
+    <junit.version>5.9.2</junit.version>
 
-    <maven.enforcer.plugin>3.1.0</maven.enforcer.plugin>
-    <maven.compiler.plugin>3.5.1</maven.compiler.plugin>
-    <maven.source.plugin>3.0.1</maven.source.plugin>
-    <maven.javadoc.plugin>3.2.0</maven.javadoc.plugin>
-    <maven.surefire.plugin>2.22.0</maven.surefire.plugin>
-    <maven.jacoco.plugin>0.8.6</maven.jacoco.plugin>
-    <maven.coveralls.plugin>4.3.0</maven.coveralls.plugin>
+    <maven.enforcer.plugin>3.3.0</maven.enforcer.plugin>
+    <maven.compiler.plugin>3.11.0</maven.compiler.plugin>
+    <maven.source.plugin>3.2.1</maven.source.plugin>
+    <maven.javadoc.plugin>3.5.0</maven.javadoc.plugin>
+    <maven.surefire.plugin>3.0.0</maven.surefire.plugin>
+    <maven.jacoco.plugin>0.8.10</maven.jacoco.plugin>
     <maven.copy.rename.plugin>1.0.1</maven.copy.rename.plugin>
-    <maven.moditect.plugin>1.0.0.RC2</maven.moditect.plugin>
+    <maven.moditect.plugin>1.0.0.RC3</maven.moditect.plugin>
 
     <bintray.subject>cdimascio</bintray.subject>
     <bintray.repo>maven</bintray.repo>
@@ -88,8 +85,14 @@
 
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
@@ -127,17 +130,10 @@
         </executions>
       </plugin>
 
-      <!-- compile java 1.8 for lib and java 11 for tests-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>${maven.compiler.plugin}</version>
-        <configuration>
-          <source>${compile.source}</source>
-          <target>${compile.source}</target>
-          <testSource>${compile.test.source}</testSource>
-          <testTarget>${compile.test.source}</testTarget>
-        </configuration>
       </plugin>
 
       <!-- add module-info -->
@@ -194,13 +190,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${maven.surefire.plugin}</version>
-        <dependencies>
-          <dependency>
-            <groupId>org.apache.maven.surefire</groupId>
-            <artifactId>surefire-junit4</artifactId>
-            <version>2.22.0</version>
-          </dependency>
-        </dependencies>
         <configuration>
           <includes>
             <include>**/*.java</include>
@@ -257,23 +246,6 @@
         </executions>
       </plugin>
 
-      <!-- Send to coveralls -->
-      <plugin>
-        <groupId>org.eluder.coveralls</groupId>
-        <artifactId>coveralls-maven-plugin</artifactId>
-        <version>${maven.coveralls.plugin}</version>
-        <configuration>
-          <repoToken>r92OLg0S3kCJakLAMW6HlLsDgNSMaolGS</repoToken>
-        </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.2.3</version>
-          </dependency>
-        </dependencies>
-      </plugin>
-
       <!-- copy pom to target -->
       <plugin>
         <groupId>com.coderplus.maven.plugins</groupId>
@@ -290,7 +262,7 @@
               <fileSets>
                 <fileSet>
                   <sourceFile>${project.basedir}/pom.xml</sourceFile>
-                  <destinationFile>${project.build.directory}/dotenv-java-2.2.4.pom</destinationFile>
+                  <destinationFile>${project.build.directory}/${project.artifactId}-${project.version}.pom</destinationFile>
                 </fileSet>
               </fileSets>
             </configuration>
@@ -315,7 +287,7 @@
       <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>nexus-staging-maven-plugin</artifactId>
-        <version>1.6.7</version>
+        <version>1.6.13</version>
         <extensions>true</extensions>
         <configuration>
           <serverId>ossrh</serverId>
@@ -355,7 +327,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.5</version>
+            <version>3.0.1</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>
