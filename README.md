@@ -34,7 +34,7 @@ _Still using Java 8? Use version 2.3.2_
 <dependency>
     <groupId>io.github.cdimascio</groupId>
     <artifactId>dotenv-java</artifactId>
-    <version>2.3.2</version>
+    <version>3.0.0</version>
 </dependency>
 ```
 
