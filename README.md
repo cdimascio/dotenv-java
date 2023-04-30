@@ -25,7 +25,9 @@ Use `dotenv.get("...")` instead of Java's `System.getenv(...)`.
 
 ## Install
 
-_Requires Java 8 or greater._
+_Requires Java 11 or greater._
+
+_Still using Java 8? Use version 2.3.2_
 
 ### Maven
 ```xml
@@ -39,19 +41,19 @@ _Requires Java 8 or greater._
 ### Gradle <4.10
 
 ```groovy
-compile 'io.github.cdimascio:dotenv-java:2.3.2'
+compile 'io.github.cdimascio:dotenv-java:3.0.0'
 ```
 
 ### Gradle >=4.10
 
 ```groovy
-implementation 'io.github.cdimascio:dotenv-java:2.3.2'
+implementation 'io.github.cdimascio:dotenv-java:3.0.0'
 ```
 
 ### Gradle Kotlin DSL
 
 ```kotlin
-implementation("io.github.cdimascio:dotenv-java:2.3.2")
+implementation("io.github.cdimascio:dotenv-java:3.0.0")
 ```
 
 Looking for the Kotlin variant? **get [dotenv-kotlin](https://github.com/cdimascio/dotenv-kotlin)**.
