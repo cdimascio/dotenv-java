@@ -51,6 +51,17 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "manoelcampos",
+      "name": "Manoel Campos",
+      "avatar_url": "https://avatars.githubusercontent.com/u/261605?v=4",
+      "profile": "https://youtube.com/@manoelcamposdev",
+      "contributions": [
+        "code",
+        "test",
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,
