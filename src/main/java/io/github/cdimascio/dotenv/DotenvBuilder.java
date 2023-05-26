@@ -1,6 +1,6 @@
 package io.github.cdimascio.dotenv;
 
-import io.github.cdimascio.dotenv.internal.DotenvPathReader;
+import io.github.cdimascio.dotenv.internal.DotenvFileReader;
 import io.github.cdimascio.dotenv.internal.DotenvParser;
 
 import java.util.*;
@@ -64,15 +64,27 @@ public class DotenvBuilder {
         return this;
     }
 
+    private boolean pathsApiAvailable() {
+        try {
+            final String packageName = "java.nio.file";
+            final Class<?> clazz = Class.forName(packageName + "." + "Paths");
+            return true;
+        } catch (Exception e) {
+        }
+        return false;
+    }
+
     /**
      * Load the contents of .env into the virtual environment.
      * @return a new {@link Dotenv} instance
      * @throws DotenvException when an error occurs
      */
     public Dotenv load() throws DotenvException {
+        final var fileReader = pathsApiAvailable() ?
+            new DotenvFileReader(directoryPath, filename) : new DotenvFileReader(directoryPath, filename);
         final var reader = new DotenvParser(
-                                new DotenvPathReader(directoryPath, filename),
-                                throwIfMissing, throwIfMalformed);
+            fileReader,
+            throwIfMissing, throwIfMalformed);
         final List<DotenvEntry> env = reader.parse();
         if (systemProperties) {
             env.forEach(it -> System.setProperty(it.getKey(), it.getValue()));
