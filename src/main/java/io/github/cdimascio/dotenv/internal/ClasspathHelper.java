@@ -2,6 +2,7 @@ package io.github.cdimascio.dotenv.internal;
 
 import io.github.cdimascio.dotenv.DotenvException;
 
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -12,6 +13,18 @@ import java.util.stream.Stream;
  */
 public class ClasspathHelper {
     static Stream<String> loadFileFromClasspath(String location) {
+        InputStream inputStream = getInputStream(location);
+
+        final var scanner = new Scanner(inputStream, StandardCharsets.UTF_8);
+        final var lines = new ArrayList<String>();
+        while (scanner.hasNext()) {
+            lines.add(scanner.nextLine());
+        }
+
+        return lines.stream();
+    }
+
+    static InputStream getInputStream(String location) {
         final var loader = ClasspathHelper.class;
         var inputStream = loader.getResourceAsStream(location);
         if (inputStream == null) {
@@ -22,15 +35,8 @@ public class ClasspathHelper {
         }
 
         if (inputStream == null) {
-            throw new DotenvException("Could not find "+location+" on the classpath");
+            throw new DotenvException("Could not find "+ location +" on the classpath");
         }
-
-        final var scanner = new Scanner(inputStream, StandardCharsets.UTF_8);
-        final var lines = new ArrayList<String>();
-        while (scanner.hasNext()) {
-            lines.add(scanner.nextLine());
-        }
-
-        return lines.stream();
+        return inputStream;
     }
 }

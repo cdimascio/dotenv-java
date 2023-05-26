@@ -3,11 +3,11 @@ package io.github.cdimascio.dotenv.internal;
 import io.github.cdimascio.dotenv.DotenvException;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URI;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * (Internal) Reads a .env file
@@ -28,27 +28,29 @@ public class DotenvFileReader extends BaseDotenvReader {
      * @throws DotenvException if a dotenv error occurs
      */
     public List<String> read() throws DotenvException {
-        String dir = sanitizeDirectory();
+        final String dir = sanitizeDirectory();
 
-        String location = dir + "/" + filename;
-        String lowerLocation = location.toLowerCase();
+        final String location = dir + "/" + filename;
+        final String lowerLocation = location.toLowerCase();
 
-        File file = lowerLocation.startsWith("file:") || lowerLocation.startsWith("android.resource:")
+        try {
+            final File file = lowerLocation.startsWith("file:") || lowerLocation.startsWith("android.resource:")
             ? new File(URI.create(location))
             : new File(location);
 
-        try {
+            if (file.exists()) {
+                return FileClasspathHelper.readLines(new FileInputStream(file));
+            }
             var classpathLocation = file.exists() ? file.getPath() : location.replaceFirst("^\\./", "/");
-            return ClasspathHelper
-                .loadFileFromClasspath(classpathLocation)
-                .collect(Collectors.toList());
-        } catch (DotenvException e) {
-            Path cwd = FileSystems.getDefault().getPath(".").toAbsolutePath().normalize();
-            String cwdMessage = !file.isAbsolute() ? "(working directory: " + cwd + ")" : "";
-            e.addSuppressed(new DotenvException("Could not find " + file.getPath() + " on the file system " + cwdMessage));
-            throw e;
+            return new ArrayList<>(FileClasspathHelper
+                .loadFileFromClasspath(classpathLocation));
+        } catch (DotenvException | FileNotFoundException e) {
+            e.addSuppressed(new DotenvException("Could not find " + location + " on the file system "));
+            throw new DotenvException(e);
         }
     }
+
+
 
 
 }
