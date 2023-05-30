@@ -64,7 +64,7 @@ public class DotenvBuilder {
         return this;
     }
 
-    private boolean pathsApiAvailable() {
+    protected boolean pathsApiAvailable() {
         try {
             final String packageName = "java.nio.file";
             final Class<?> clazz = Class.forName(packageName + "." + "Paths");
