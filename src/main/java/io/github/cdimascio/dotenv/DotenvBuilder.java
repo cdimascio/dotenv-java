@@ -2,6 +2,7 @@ package io.github.cdimascio.dotenv;
 
 import io.github.cdimascio.dotenv.internal.DotenvFileReader;
 import io.github.cdimascio.dotenv.internal.DotenvParser;
+import io.github.cdimascio.dotenv.internal.DotenvPathReader;
 
 import java.util.*;
 
@@ -81,7 +82,7 @@ public class DotenvBuilder {
      */
     public Dotenv load() throws DotenvException {
         final var fileReader = pathsApiAvailable() ?
-            new DotenvFileReader(directoryPath, filename) : new DotenvFileReader(directoryPath, filename);
+            new DotenvPathReader(directoryPath, filename) : new DotenvFileReader(directoryPath, filename);
         final var reader = new DotenvParser(
             fileReader,
             throwIfMissing, throwIfMalformed);
