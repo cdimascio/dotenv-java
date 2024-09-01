@@ -219,7 +219,7 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>${maven.javadoc.plugin}</version>
         <configuration>
-          <source>${compile.javadoc.source}</source>
+
         </configuration>
         <executions>
           <execution>
@@ -237,6 +237,11 @@
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>${maven.jacoco.plugin}</version>
+        <configuration>
+            <excludes>
+              <exclude>sun/util/resources/cldr/provider/CLDRLocaleDataMetaInfo</exclude>
+            </excludes>
+        </configuration>
         <executions>
           <execution>
             <id>prepare-agent</id>
