@@ -1,3 +1,5 @@
+permissions: read-all
+
 name: build
 
 on:

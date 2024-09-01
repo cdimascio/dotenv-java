@@ -11,7 +11,7 @@
 
   <groupId>io.github.cdimascio</groupId>
   <artifactId>dotenv-java</artifactId>
-  <version>3.0.0</version>
+  <version>3.0.1</version>
 
   <licenses>
     <license>
@@ -174,10 +174,10 @@
             <id>create-javadoc-dir</id>
             <phase>compile</phase>
             <configuration>
-              <tasks>
+              <target>
                 <delete dir="${javadoc.dir}"/>
                 <mkdir dir="${javadoc.dir}"/>
-              </tasks>
+              </target>
             </configuration>
             <goals>
               <goal>run</goal>
@@ -328,7 +328,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>3.0.1</version>
+            <version>3.2.4</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>
