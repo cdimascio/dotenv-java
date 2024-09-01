@@ -49,6 +49,8 @@ Contributors are not responsible for deploying to mavencentral.
 
 - Publish with Maven - https://central.sonatype.org/publish/publish-maven/
 - GPG Setup - https://central.sonatype.org/publish/requirements/gpg/
+- https://oss.sonatype.org/#profile;User%20Token
+  - get oss.sonatype token
 
 To publish a gpg key:
 
@@ -95,3 +97,4 @@ https://docs.github.com/en/packages/using-github-packages-with-your-projects-eco
 OpenSSF Security Scorecard
 - Get Analysis Result: https://api.securityscorecards.dev/#/results/getResult
 - Step Security - Secure Your Repo Analysis + auto PR - https://app.stepsecurity.io/securerepo
+- Step Security - For Repo - https://app.stepsecurity.io/github/cdimascio/actions/dashboard
