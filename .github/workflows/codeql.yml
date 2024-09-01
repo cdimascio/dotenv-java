@@ -69,8 +69,8 @@ jobs:
       #   modify them (or add more) to build your code if your project, please refer to the EXAMPLE below for guidance.
 
       - run: |
-        echo "Run, Build Application using script"
-        mvn clean test jacoco:report package 
+          echo "Run, Build Application using script"
+          mvn clean test jacoco:report package 
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@4dd16135b69a43b6c8efb853346f8437d92d3c93 # v3.26.6
