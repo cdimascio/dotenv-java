@@ -1,5 +1,18 @@
 ##  (2024-09-01)
 
+* Delete .github/workflows/codeql.yml (#71) ([c52803f](https://github.com/cdimascio/dotenv-java/commit/c52803f)), closes [#71](https://github.com/cdimascio/dotenv-java/issues/71) [#70](https://github.com/cdimascio/dotenv-java/issues/70) [#69](https://github.com/cdimascio/dotenv-java/issues/69)
+* fix javadoc target (#72) ([8c0b9c5](https://github.com/cdimascio/dotenv-java/commit/8c0b9c5)), closes [#72](https://github.com/cdimascio/dotenv-java/issues/72)
+* fixes #63 string oob with ignore malformed (#74) ([4e23eda](https://github.com/cdimascio/dotenv-java/commit/4e23eda)), closes [#63](https://github.com/cdimascio/dotenv-java/issues/63) [#74](https://github.com/cdimascio/dotenv-java/issues/74)
+* update CHANGELOG.md ([0fdabfd](https://github.com/cdimascio/dotenv-java/commit/0fdabfd))
+* Update codeql.yml (#70) ([1966f4f](https://github.com/cdimascio/dotenv-java/commit/1966f4f)), closes [#70](https://github.com/cdimascio/dotenv-java/issues/70)
+* update CONTRIBUTING.md to include signed artifact github upload (#73) ([d216732](https://github.com/cdimascio/dotenv-java/commit/d216732)), closes [#73](https://github.com/cdimascio/dotenv-java/issues/73)
+* update integrates OpenSSF badging details into README and CONTRIBUTING (#75) ([ba7ec54](https://github.com/cdimascio/dotenv-java/commit/ba7ec54)), closes [#75](https://github.com/cdimascio/dotenv-java/issues/75) [#63](https://github.com/cdimascio/dotenv-java/issues/63)
+* Update README.md (#69) ([7870e4f](https://github.com/cdimascio/dotenv-java/commit/7870e4f)), closes [#69](https://github.com/cdimascio/dotenv-java/issues/69)
+
+
+
+##  (2024-09-01)
+
 * [StepSecurity] Apply security best practices (#66) ([f50dd1b](https://github.com/cdimascio/dotenv-java/commit/f50dd1b)), closes [#66](https://github.com/cdimascio/dotenv-java/issues/66)
 * Add support from reading from jimfs in-memory FS (#60) ([0c5642e](https://github.com/cdimascio/dotenv-java/commit/0c5642e)), closes [#60](https://github.com/cdimascio/dotenv-java/issues/60)
 * Create SECURITY.md (#65) ([162a574](https://github.com/cdimascio/dotenv-java/commit/162a574)), closes [#65](https://github.com/cdimascio/dotenv-java/issues/65)
