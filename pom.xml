@@ -75,13 +75,13 @@
     <bintray.package>dotenv-java</bintray.package>
   </properties>
 
-  <pluginRepositories>
+<pluginRepositories>
     <pluginRepository>
-      <id>jcenter</id>
-      <name>JCenter</name>
-      <url>https://jcenter.bintray.com/</url>
+        <id>central</id>
+        <name>Maven Central</name>
+        <url>https://repo.maven.apache.org/maven2</url>
     </pluginRepository>
-  </pluginRepositories>
+</pluginRepositories>
 
   <dependencies>
     <dependency>
