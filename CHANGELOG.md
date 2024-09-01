@@ -1,3 +1,16 @@
+##  (2024-09-01)
+
+* [StepSecurity] Apply security best practices (#66) ([f50dd1b](https://github.com/cdimascio/dotenv-java/commit/f50dd1b)), closes [#66](https://github.com/cdimascio/dotenv-java/issues/66)
+* Add support from reading from jimfs in-memory FS (#60) ([0c5642e](https://github.com/cdimascio/dotenv-java/commit/0c5642e)), closes [#60](https://github.com/cdimascio/dotenv-java/issues/60)
+* Create SECURITY.md (#65) ([162a574](https://github.com/cdimascio/dotenv-java/commit/162a574)), closes [#65](https://github.com/cdimascio/dotenv-java/issues/65)
+* update CONTRIBUTING.md ([6d60f39](https://github.com/cdimascio/dotenv-java/commit/6d60f39))
+* Update CONTRIBUTING.md (#67) ([158a525](https://github.com/cdimascio/dotenv-java/commit/158a525)), closes [#67](https://github.com/cdimascio/dotenv-java/issues/67)
+* update pom.xml ([aa8d1d5](https://github.com/cdimascio/dotenv-java/commit/aa8d1d5))
+* v3.0.1 ([c8bf7b0](https://github.com/cdimascio/dotenv-java/commit/c8bf7b0))
+* docs: add manoelcampos as a contributor for code, test, and infra (#52) ([5b6c71d](https://github.com/cdimascio/dotenv-java/commit/5b6c71d)), closes [#52](https://github.com/cdimascio/dotenv-java/issues/52)
+
+
+
 ##  (2023-04-30)
 
 * Adds support to Java 11 (#51) ([d586bd3](https://github.com/cdimascio/dotenv-java/commit/d586bd3)), closes [#51](https://github.com/cdimascio/dotenv-java/issues/51)
