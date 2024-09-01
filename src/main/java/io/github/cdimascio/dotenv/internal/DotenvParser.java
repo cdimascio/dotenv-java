@@ -34,15 +34,16 @@ public class DotenvParser {
     private final boolean throwIfMissing;
     private final boolean throwIfMalformed;
 
-    private final Predicate<String> isWhiteSpace = s -> matches(WHITE_SPACE_REGEX, s);
-    private final Predicate<String> isComment = s -> s.startsWith("#") || s.startsWith("////");
-    private final Predicate<String> isQuoted = s -> s.startsWith("\"") && s.endsWith("\"");
+    private static final Predicate<String> isWhiteSpace = s -> matches(WHITE_SPACE_REGEX, s);
+    private static final Predicate<String> isComment = s -> s.startsWith("#") || s.startsWith("////");
+    private static final Predicate<String> isQuoted = s -> s.length() > 1 && s.startsWith("\"") && s.endsWith("\"");
     private final Function<String, DotenvEntry> parseLine = s -> matchEntry(DOTENV_ENTRY_REGEX, s);
 
     /**
      * Creates a dotenv parser
-     * @param reader the dotenv reader
-     * @param throwIfMissing if true, throws when the .env file is missing
+     *
+     * @param reader           the dotenv reader
+     * @param throwIfMissing   if true, throws when the .env file is missing
      * @param throwIfMalformed if true, throws when the .env file is malformed
      */
     public DotenvParser(final DotenvReader reader, final boolean throwIfMissing, final boolean throwIfMalformed) {
@@ -53,6 +54,7 @@ public class DotenvParser {
 
     /**
      * (Internal) parse the .env file
+     *
      * @return a list of DotenvEntries
      * @throws DotenvException if an error is encountered during the parse
      */
@@ -77,8 +79,13 @@ public class DotenvParser {
             return;
         }
 
+        if (!QuotedStringValidator.isValid(entry.getValue())) {
+            if (throwIfMalformed)
+                throw new DotenvException("Malformed entry, unmatched quotes " + line);
+            return;
+        }
         final var key = entry.getKey();
-        final var value = normalizeValue(entry.getValue());
+        final var value = QuotedStringValidator.stripQuotes(entry.getValue());
         entries.add(new DotenvEntry(key, value));
     }
 
@@ -92,11 +99,6 @@ public class DotenvParser {
         } catch (IOException e) {
             throw new DotenvException(e);
         }
-    }
-
-    private String normalizeValue(final String value) {
-        final var tr = value.trim();
-        return isQuoted.test(tr) ? tr.substring(1, value.length() - 1) : tr;
     }
 
     private static boolean matches(final Pattern regex, final String text) {
@@ -114,4 +116,40 @@ public class DotenvParser {
     private static boolean isBlank(String s) {
         return s == null || s.trim().isEmpty();
     }
+
+    /**
+     * Internal: Validates quoted strings
+     */
+    private static class QuotedStringValidator {
+        private static boolean isValid(String input) {
+            final var s = input.trim();
+            if (!s.startsWith("\"") && !s.endsWith("\"")) {
+                // not quoted, its valid
+                return true;
+            }
+            if (input.length() == 1 || !(s.startsWith("\"") && s.endsWith("\""))) {
+                // doesn't start and end with quote
+                return false;
+            }
+            // remove start end quote
+            var content = s.substring(1, s.length() - 1);
+            var quotePattern = Pattern.compile("\"");
+            var matcher = quotePattern.matcher(content);
+
+            // Check for unescaped quotes
+            while (matcher.find()) {
+                int quoteIndex = matcher.start();
+                // Check if the quote is escaped
+                if (quoteIndex == 0 || content.charAt(quoteIndex - 1) != '\\') {
+                    return false; // unescaped quote found
+                }
+            }
+            return true; // No unescaped quotes found
+        }
+        private static String stripQuotes(String input) {
+            var tr = input.trim();
+            return isQuoted.test(tr) ? tr.substring(1, input.length() - 1) : tr;
+        }
+    }
 }
+
