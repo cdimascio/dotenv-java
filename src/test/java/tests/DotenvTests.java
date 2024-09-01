@@ -101,4 +101,16 @@ class DotenvTests {
 
         assertNotNull(dotenv.get("PATH"));
     }
+
+        @Test
+    void malformedWithUncloseQuote() {
+        final var dotenv = Dotenv.configure()
+            .directory("/unclosed.quote")
+            .ignoreIfMalformed()
+            .load();
+
+        assertNull(dotenv.get("FOO"));
+        assertEquals(dotenv.get("BAR"), "bar");
+        assertNull(dotenv.get("BAZ"), "baz");
+    }
 }
