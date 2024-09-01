@@ -90,3 +90,8 @@ mvn clean test jacoco:report package deploy  -Dregistry=https://maven.pkg.github
 ```
 
 https://docs.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-apache-maven-for-use-with-github-packages
+
+
+OpenSSF Security Scorecard
+- Get Analysis Result: https://api.securityscorecards.dev/#/results/getResult
+- Step Security - Secure Your Repo Analysis + auto PR - https://app.stepsecurity.io/securerepo
