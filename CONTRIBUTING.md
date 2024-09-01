@@ -50,11 +50,6 @@ Build sources and javadoc
 mvn clean test jacoco:report package 
 ```
 
-Generate signed artifacts locally
-```shell
-mvn verify -P release-sign-artifacts -DperformRelease=true
-```
-
 ### Publish to Maven Central
 
 Deploy
@@ -68,6 +63,12 @@ When first publishing to staging repos, you most close and release from OSS Sona
 - press the `release` button
 
 #### Artifacts upload
+
+- Generate signed artifacts locally
+  ```shell
+  mvn verify -P release-sign-artifacts -DperformRelease=true
+  ```
+
 - Upload change log
   ```shell
   gh release create v3.0.1 -F CHANGELOG.md
@@ -77,6 +78,7 @@ When first publishing to staging repos, you most close and release from OSS Sona
   ```shell
   gh release upload target/*.jar.asc --clobber       
   ```
+
 ### Publish to Github Packages
 
 _Note: This step can only be run by maintainers._
@@ -141,6 +143,7 @@ https://docs.github.com/en/packages/using-github-packages-with-your-projects-eco
 
 ### OpenSSF Security Scorecard
 - Get Analysis Result: https://api.securityscorecards.dev/#/results/getResult
+  - enter platform=github.com, org=cdimascio, repo=dotenv-java
 - Step Security - Secure Your Repo Analysis + auto PR - https://app.stepsecurity.io/securerepo
 - Step Security - For Repo - https://app.stepsecurity.io/github/cdimascio/actions/dashboard
-
+- OpenSSF Badget Analysis https://www.bestpractices.dev/en/projects/9407
