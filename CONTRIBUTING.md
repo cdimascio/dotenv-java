@@ -71,12 +71,12 @@ When first publishing to staging repos, you most close and release from OSS Sona
 
 - Upload change log
   ```shell
-  gh release create v3.0.1 -F CHANGELOG.md
+  gh release create v3.0.2 -F CHANGELOG.md
   ```
 
 - Attach 'signed' artifacts (needed for OpenSSF Security Score)
   ```shell
-  gh release upload target/*.jar.asc --clobber       
+  gh release upload v3.0.2 target/*.jar.asc --clobber       
   ```
 
 ### Publish to Github Packages
