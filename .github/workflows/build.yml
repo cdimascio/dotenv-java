@@ -27,3 +27,8 @@ jobs:
           cache: maven
       - name: Build with Maven
         run: mvn clean package jacoco:report
+      - name: Codacy coverage report upload
+        env:
+          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+        run: |
+          test -z $CODACY_PROJECT_TOKEN || bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r target/site/jacoco/jacoco.xml
