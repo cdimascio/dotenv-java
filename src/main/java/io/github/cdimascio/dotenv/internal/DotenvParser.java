@@ -60,33 +60,41 @@ public class DotenvParser {
      */
     public List<DotenvEntry> parse() throws DotenvException {
         final var lines = lines();
-        final var entries = new ArrayList<DotenvEntry>(lines.size());
+        final var entries = new ArrayList<DotenvEntry>();
+  
+        var currentEntry = "";
         for (final var line : lines) {
-            addNewEntry(entries, line.trim());
+            if (currentEntry == "" && (isWhiteSpace.test(line) || isComment.test(line) || isBlank(line)))
+                continue;
+
+            currentEntry += line;
+
+            final var entry = parseLine.apply(currentEntry);
+            if (entry == null) {
+                if (throwIfMalformed)
+                    throw new DotenvException("Malformed entry " + currentEntry);
+                currentEntry = "";
+                continue;
+            }
+
+            var value = entry.getValue();
+            if (QuotedStringValidator.startsWithQuote(value) && !QuotedStringValidator.endsWithQuote(value)) {
+                currentEntry += "\n";
+                continue;
+            }
+            if (!QuotedStringValidator.isValid(entry.getValue())) {
+                if (throwIfMalformed)
+                    throw new DotenvException("Malformed entry, unmatched quotes " + line);
+                currentEntry = "";
+                continue;
+            }
+            final var key = entry.getKey();
+            value = QuotedStringValidator.stripQuotes(entry.getValue());
+            entries.add(new DotenvEntry(key, value));
+            currentEntry = "";
         }
 
         return entries;
-    }
-
-    private void addNewEntry(final List<DotenvEntry> entries, final String line) {
-        if (isWhiteSpace.test(line) || isComment.test(line) || isBlank(line))
-            return;
-
-        final var entry = parseLine.apply(line);
-        if (entry == null) {
-            if (throwIfMalformed)
-                throw new DotenvException("Malformed entry " + line);
-            return;
-        }
-
-        if (!QuotedStringValidator.isValid(entry.getValue())) {
-            if (throwIfMalformed)
-                throw new DotenvException("Malformed entry, unmatched quotes " + line);
-            return;
-        }
-        final var key = entry.getKey();
-        final var value = QuotedStringValidator.stripQuotes(entry.getValue());
-        entries.add(new DotenvEntry(key, value));
     }
 
     private List<String> lines() throws DotenvException {
@@ -123,14 +131,17 @@ public class DotenvParser {
     private static class QuotedStringValidator {
         private static boolean isValid(String input) {
             final var s = input.trim();
-            if (!s.startsWith("\"") && !s.endsWith("\"")) {
-                // not quoted, its valid
+            if (isNotQuoted(s)) {
                 return true;
             }
-            if (input.length() == 1 || !(s.startsWith("\"") && s.endsWith("\""))) {
-                // doesn't start and end with quote
+            if (doesNotStartAndEndWithQuote(s)) {
                 return false;
             }
+
+            return !hasUnescapedQuote(s); // No unescaped quotes found
+        }
+        private static boolean hasUnescapedQuote(final String s) {
+            boolean hasUnescapedQuote = false;
             // remove start end quote
             var content = s.substring(1, s.length() - 1);
             var quotePattern = Pattern.compile("\"");
@@ -141,10 +152,22 @@ public class DotenvParser {
                 int quoteIndex = matcher.start();
                 // Check if the quote is escaped
                 if (quoteIndex == 0 || content.charAt(quoteIndex - 1) != '\\') {
-                    return false; // unescaped quote found
+                    hasUnescapedQuote = true; // unescaped quote found
                 }
             }
-            return true; // No unescaped quotes found
+            return hasUnescapedQuote;
+        }
+        private static boolean doesNotStartAndEndWithQuote(final String s) {
+            return s.length() == 1 || !(startsWithQuote(s) && endsWithQuote(s));
+        }
+        private static boolean endsWithQuote(final String s) {
+            return s.endsWith("\"");
+        }
+        private static boolean startsWithQuote(final String s) {
+            return s.startsWith("\"");
+        }
+        private static boolean isNotQuoted(final String s) {
+            return !startsWithQuote(s) && !endsWithQuote(s);
         }
         private static String stripQuotes(String input) {
             var tr = input.trim();

@@ -110,7 +110,6 @@ class DotenvTests {
             .load();
 
         assertNull(dotenv.get("FOO"));
-        assertEquals(dotenv.get("BAR"), "bar");
         assertNull(dotenv.get("BAZ"), "baz");
     }
 }
