@@ -64,7 +64,7 @@ public class DotenvParser {
   
         var currentEntry = "";
         for (final var line : lines) {
-            if (currentEntry == "" && (isWhiteSpace.test(line) || isComment.test(line) || isBlank(line)))
+            if (currentEntry.equals("") && (isWhiteSpace.test(line) || isComment.test(line) || isBlank(line)))
                 continue;
 
             currentEntry += line;
