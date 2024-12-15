@@ -1,3 +1,12 @@
+##  (2024-12-15)
+
+* Cmd/melegati ml (#79) ([6d67cbf](https://github.com/cdimascio/dotenv-java/commit/6d67cbf)), closes [#79](https://github.com/cdimascio/dotenv-java/issues/79)
+* Handling real multi line entries. (#78) ([f3c43ec](https://github.com/cdimascio/dotenv-java/commit/f3c43ec)), closes [#78](https://github.com/cdimascio/dotenv-java/issues/78)
+* Update build workflow to upload JaCoCo code coverage report to https://codacy.com (#54) ([655d880](https://github.com/cdimascio/dotenv-java/commit/655d880)), closes [#54](https://github.com/cdimascio/dotenv-java/issues/54)
+* update README and CONTRIBUTING (#76) ([bd434e1](https://github.com/cdimascio/dotenv-java/commit/bd434e1)), closes [#76](https://github.com/cdimascio/dotenv-java/issues/76)
+
+
+
 ##  (2024-09-01)
 
 * Delete .github/workflows/codeql.yml (#71) ([c52803f](https://github.com/cdimascio/dotenv-java/commit/c52803f)), closes [#71](https://github.com/cdimascio/dotenv-java/issues/71) [#70](https://github.com/cdimascio/dotenv-java/issues/70) [#69](https://github.com/cdimascio/dotenv-java/issues/69)
