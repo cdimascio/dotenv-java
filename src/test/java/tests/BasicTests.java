@@ -14,9 +14,12 @@ class BasicTests {
         put("MY_TEST_EV1", "my test ev 1");
         put("MY_TEST_EV2", "my test ev 2");
         put("WITHOUT_VALUE", "");
-        put("MULTI_LINE", "hello\\nworld");
+        put("MULTI_LINE", "hello\nworld\nmulti");
+        put("TWO_LINE", "hello\nworld");
         put("TRAILING_COMMENT", "value");
         put("QUOTED_VALUE", "iH4>hb_d0#_GN8d]6");
+        put("MY_TEST_EV4", "my test ev 4");
+        put("MULTI_LINE_WITH_SHARP", "hello\n#world");
     }};
 
     @Test
