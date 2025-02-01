@@ -219,7 +219,7 @@ see [javadoc](https://cdimascio.github.io/dotenv-java/docs/javadoc/)
 
 **Q:** Should I deploy a `.env` to e.g. production?
 
-**A**: Tenant III of the [12 factor app methodology](https://12factor.net/config) states "The twelve-factor app stores config in environment variables". Thus, it is not recommended to provide the .env file to such environments. dotenv, however, is super useful in e.g a local development environment as it enables a developer to manage the environment via a file which is more convenient.
+**A**: Tenet III of the [12 factor app methodology](https://12factor.net/config) states "The twelve-factor app stores config in environment variables". Thus, it is not recommended to provide the .env file to such environments. dotenv, however, is super useful in e.g a local development environment as it enables a developer to manage the environment via a file which is more convenient.
 
 Using dotenv in production would be cheating. This type of usage, however is an anti-pattern.
 
