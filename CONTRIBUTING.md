@@ -97,6 +97,7 @@ Add `distributionManagement` to `pom.xml`
 
 ```shell
 # deploy to github packages
+# comment out sonatype plugin sonatype repository from pom.xml, then
 mvn deploy -Dregistry=https://maven.pkg.github.com/cdimascio -Dtoken=XXXX
 # or
 mvn clean test jacoco:report package deploy  -Dregistry=https://maven.pkg.github.com/cdimascio -Dtoken=XXXX
