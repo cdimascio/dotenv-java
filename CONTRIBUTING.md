@@ -120,6 +120,8 @@ To publish a gpg key:
 
 ```shell
 gpg --send-keys 5BE1414D5EAF81B48F2E77E1999F818C080AF9C1
+## search keys
+gpg --keyserver keyserver.ubuntu.com --search-keys 5BE1414D5EAF81B48F2E77E1999F818C080AF9C1
 ````
 
 where `5BE1414D5EAF81B48F2E77E1999F818C080AF9C1` is the public key
@@ -147,3 +149,26 @@ https://docs.github.com/en/packages/using-github-packages-with-your-projects-eco
 - Step Security - Secure Your Repo Analysis + auto PR - https://app.stepsecurity.io/securerepo
 - Step Security - For Repo - https://app.stepsecurity.io/github/cdimascio/actions/dashboard
 - OpenSSF Badget Analysis https://www.bestpractices.dev/en/projects/9407
+
+
+### GPG Key notes
+
+-  `cat ~/.gnupg/gpg.conf`
+Note that the keyserver is specified
+```
+auto-key-retrieve
+no-emit-version
+keyserver hkp://keyserver.ubuntu.com
+```
+
+```
+
+Send and validate keys are present on the keyserver
+``shell
+# send public key
+gpg --keyserver keyserver.ubuntu.com --send-keys D4E6A3593F7EC1BBC039AC99896F36215850D4C7
+
+# search public key
+gpg --keyserver keyserver.ubuntu.com --search-keys D4E6A3593F7EC1BBC039AC99896F36215850D4C7
+
+```
