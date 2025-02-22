@@ -88,7 +88,7 @@ public class DotenvBuilder {
         public DotenvImpl(final List<DotenvEntry> envVars) {
             final Map<String, String> envVarsInFile =
                 envVars.stream()
-                       .collect(toMap(DotenvEntry::getKey, DotenvEntry::getValue));
+                       .collect(toMap(DotenvEntry::getKey, DotenvEntry::getValue, (a, b) -> b));
 
             this.envVars = new HashMap<>(envVarsInFile);
             this.envVars.putAll(System.getenv());

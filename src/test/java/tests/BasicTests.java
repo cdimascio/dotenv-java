@@ -40,6 +40,16 @@ class BasicTests {
     }
 
     @Test
+    void dotenvDuplicateVariable() {
+        final var dotenv = Dotenv.configure()
+            .directory("./duplicateVariable")
+            .load();
+
+        assertEquals("Overridden Again Variable", dotenv.get("MY_TEST_EV1"));
+        assertEquals("Variable 2", dotenv.get("MY_TEST_EV2"));
+    }
+
+    @Test
     void dotenvFilename() {
         final var dotenv = Dotenv.configure()
             .directory("./src/test/resources")
