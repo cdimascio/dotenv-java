@@ -20,6 +20,7 @@ class BasicTests {
         put("QUOTED_VALUE", "iH4>hb_d0#_GN8d]6");
         put("MY_TEST_EV4", "my test ev 4");
         put("MULTI_LINE_WITH_SHARP", "hello\n#world");
+        put("UTF8_STRING", "äöüßé😀");
     }};
 
     @Test
@@ -144,6 +145,15 @@ class BasicTests {
         for (final var e : dotenv.entries()) {
             assertEquals(dotenv.get(e.getKey()), e.getValue());
         }
+    }
+    
+    @Test
+    void iterateOverEnvVar() {
+        final var dotenv = Dotenv.configure()
+            .ignoreIfMalformed()
+            .load();
+
+        envVars.forEach((key, expected) -> assertEquals(expected, dotenv.get(key)));
     }
 
     @Test
