@@ -19,3 +19,5 @@ MISSING_START_QUOTE=teste"
 MY_TEST_EV4="my test ev 4"
 MULTI_LINE_WITH_SHARP="hello
 #world"
+
+UTF8_STRING="äöüßé😀"
