@@ -1,3 +1,15 @@
+##  (2025-02-22)
+
+* Allow duplicate keys for variables (#85) ([69c3d92](https://github.com/cdimascio/dotenv-java/commit/69c3d92)), closes [#85](https://github.com/cdimascio/dotenv-java/issues/85)
+* Cmd/melegati ml (#79) ([6d67cbf](https://github.com/cdimascio/dotenv-java/commit/6d67cbf)), closes [#79](https://github.com/cdimascio/dotenv-java/issues/79)
+* Handling real multi line entries. (#78) ([f3c43ec](https://github.com/cdimascio/dotenv-java/commit/f3c43ec)), closes [#78](https://github.com/cdimascio/dotenv-java/issues/78)
+* Update build workflow to upload JaCoCo code coverage report to https://codacy.com (#54) ([655d880](https://github.com/cdimascio/dotenv-java/commit/655d880)), closes [#54](https://github.com/cdimascio/dotenv-java/issues/54)
+* update README and CONTRIBUTING (#76) ([bd434e1](https://github.com/cdimascio/dotenv-java/commit/bd434e1)), closes [#76](https://github.com/cdimascio/dotenv-java/issues/76)
+* use Scanner constructor supported since Android Api Level 1 and add tests for UTF-8 values (#86) ([dde80ff](https://github.com/cdimascio/dotenv-java/commit/dde80ff)), closes [#86](https://github.com/cdimascio/dotenv-java/issues/86)
+* v3.1.0 (#80) ([f9989e1](https://github.com/cdimascio/dotenv-java/commit/f9989e1)), closes [#80](https://github.com/cdimascio/dotenv-java/issues/80)
+
+
+
 ##  (2024-12-15)
 
 * Cmd/melegati ml (#79) ([6d67cbf](https://github.com/cdimascio/dotenv-java/commit/6d67cbf)), closes [#79](https://github.com/cdimascio/dotenv-java/issues/79)
