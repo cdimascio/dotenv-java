@@ -9,7 +9,11 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 
 class DotenvTests {
     private Map<String, String> envVars;
@@ -102,7 +106,17 @@ class DotenvTests {
         assertNotNull(dotenv.get("PATH"));
     }
 
-        @Test
+    @Test
+    void configureWithIgnoreMalformedAndEmpty() {
+        Dotenv dotenv = Dotenv.configure()
+            .ignoreIfMalformed()
+            .ignoreEmpty()
+            .load();
+
+        assertNull(dotenv.get("WITHOUT_VALUE"));
+    }
+
+    @Test
     void malformedWithUncloseQuote() {
         final var dotenv = Dotenv.configure()
             .directory("/unclosed.quote")

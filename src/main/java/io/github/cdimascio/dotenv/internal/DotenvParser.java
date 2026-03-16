@@ -31,6 +31,7 @@ public class DotenvParser {
     private static final Pattern DOTENV_ENTRY_REGEX = Pattern.compile("^\\s*([\\w.\\-]+)\\s*(=)\\s*(['][^']*[']|[\"][^\"]*[\"]|[^#]*)?\\s*(#.*)?$"); //"^\\s*([\\w.\\-]+)\\s*(=)\\s*([^#]*)?\\s*(#.*)?$"); // ^\s*([\w.\-]+)\s*(=)\s*([^#]*)?\s*(#.*)?$
 
     private final DotenvReader reader;
+    private final boolean ignoreEmtpy;
     private final boolean throwIfMissing;
     private final boolean throwIfMalformed;
 
@@ -41,13 +42,14 @@ public class DotenvParser {
 
     /**
      * Creates a dotenv parser
-     *
-     * @param reader           the dotenv reader
-     * @param throwIfMissing   if true, throws when the .env file is missing
+     * @param reader the dotenv reader
+     * @param ignoreEmpty if true, returns `null` for empty or blank values
+     * @param throwIfMissing if true, throws when the .env file is missing
      * @param throwIfMalformed if true, throws when the .env file is malformed
      */
-    public DotenvParser(final DotenvReader reader, final boolean throwIfMissing, final boolean throwIfMalformed) {
+    public DotenvParser(DotenvReader reader, boolean ignoreEmpty, boolean throwIfMissing, boolean throwIfMalformed) {
         this.reader = reader;
+        this.ignoreEmtpy = ignoreEmpty;
         this.throwIfMissing = throwIfMissing;
         this.throwIfMalformed = throwIfMalformed;
     }
@@ -82,6 +84,7 @@ public class DotenvParser {
                 currentEntry += "\n";
                 continue;
             }
+
             if (!QuotedStringValidator.isValid(entry.getValue())) {
                 if (throwIfMalformed)
                     throw new DotenvException("Malformed entry, unmatched quotes " + line);
@@ -90,6 +93,11 @@ public class DotenvParser {
             }
             final var key = entry.getKey();
             value = QuotedStringValidator.stripQuotes(entry.getValue());
+
+            if (value.isEmpty() && ignoreEmtpy) {
+                continue;
+            }
+          
             entries.add(new DotenvEntry(key, value));
             currentEntry = "";
         }
