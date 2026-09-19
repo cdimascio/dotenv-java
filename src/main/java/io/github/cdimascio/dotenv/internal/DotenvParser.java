@@ -36,7 +36,9 @@ public class DotenvParser {
 
     private static final Predicate<String> isWhiteSpace = s -> matches(WHITE_SPACE_REGEX, s);
     private static final Predicate<String> isComment = s -> s.startsWith("#") || s.startsWith("////");
-    private static final Predicate<String> isQuoted = s -> s.length() > 1 && s.startsWith("\"") && s.endsWith("\"");
+    private static final Predicate<String> isQuoted = s -> s.length() > 1
+        && ((s.startsWith("\"") && s.endsWith("\""))
+            || (s.startsWith("'") && s.endsWith("'")));
     private final Function<String, DotenvEntry> parseLine = s -> matchEntry(DOTENV_ENTRY_REGEX, s);
 
     /**
@@ -175,4 +177,3 @@ public class DotenvParser {
         }
     }
 }
-
